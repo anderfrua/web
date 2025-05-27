@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
         <p className="text-lg md:text-xl mb-8">
           Physicist & Electronics Engineer exploring Data Science.
-          I build smart solutions and clean user experiences. Available for freelance projects.
+          I build smart solutions and clean user experiences.
         </p>
         <a
           href="#projects"
