@@ -13,7 +13,7 @@ export default function Home() {
     >
       <div className="max-w-3xl">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-          Hi, I&apos;m <span className="text-blue-400">Ander Fernandez</span>
+          Hi, I&apos;m <span className="text-blue-400">Andeeeeer Fernandez</span>
         </h1>
         <p className="text-lg md:text-xl mb-8">
           Physicist & Electronics Engineer exploring Data Science.
