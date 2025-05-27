@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
-import PathfindingGrid from '@/components/PathfindingGrid';
+//import PathfindingGrid from '@/components/PathfindingGrid';
 import ParticleBackground from '@/components/ParticleBackground';
 
 
