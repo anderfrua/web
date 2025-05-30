@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 //import PathfindingGrid from '@/components/PathfindingGrid';
-//import ParticleBackground from '@/components/ParticleBackground';
+import ParticleBackground from '@/components/ParticleBackground';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -21,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+        <ParticleBackground />
         <main className="relative z-10 pt-20">{children}</main>
       </body>
     </html>
@@ -28,4 +29,3 @@ export default function RootLayout({
 }
 
 //<PathfindingGrid /> {/* Fondo interactivo */}
-//<ParticleBackground />
