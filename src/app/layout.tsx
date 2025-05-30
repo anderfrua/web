@@ -21,8 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <ParticleBackground />
         <main className="relative z-10 pt-20">{children}</main>
+        <ParticleBackground />
       </body>
     </html>
   );
