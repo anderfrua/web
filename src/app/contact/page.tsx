@@ -37,7 +37,7 @@ export default function ContactPage() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      <h1 className="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">Let's Connect</h1>
+      <h1 className="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">Let&apos;s Connect</h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mb-10">
         Whether you have a project in mind, a question, or just want to say hello — my inbox is open.
       </p>
