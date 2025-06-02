@@ -7,13 +7,22 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Ander</h1>
         <div className="flex items-center gap-6">
-          <Link href="#home" className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300">
+          <Link
+            href="/"
+            className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
+          >
             Home
           </Link>
-          <Link href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300">
+          <Link
+            href="/projects"
+            className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
+          >
             Projects
           </Link>
-          <Link href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300">
+          <Link
+            href="/contact"
+            className="hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
+          >
             Contact
           </Link>
           <ThemeToggle />
