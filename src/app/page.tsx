@@ -20,7 +20,7 @@ export default function Home() {
           I build smart solutions and clean user experiences.
         </p>
         <a
-          href="#projects"
+          href="projects"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md transition"
         >
           View My Work
