@@ -83,7 +83,7 @@ export default function InteractiveGridBackground() {
             const dx = a.x - b.x;
             const dy = a.y - b.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 100) {a
+            if (dist < 100) {
               ctx.strokeStyle = `rgba(255, 204, 0, ${1 - dist / 100})`;
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
