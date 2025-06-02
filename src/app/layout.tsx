@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
-//import InteractiveGridBackground from '@/components/InteractiveGridBackground';
+import InteractiveGridBackground from '@/components/InteractiveGridBackground';
 //import PathfindingGrid from '@/components/PathfindingGrid';
 //import ParticleBackground from '@/components/ParticleBackground';
 
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        //<InteractiveGridBackground />
+        <InteractiveGridBackground />
         <main className="relative z-10 pt-20">{children}</main>
       </body>
     </html>
