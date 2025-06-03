@@ -153,7 +153,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed text-justify"
         >
           Hey! I&apos;m Ander, a double-degree grad in Physics and Electronic Engineering from UPV/EHU — basically, I like to understand how the universe works and how to build cool stuff that actually works in real life.
           <br /><br />
