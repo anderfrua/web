@@ -59,10 +59,10 @@ export default function Home() {
                 {/* Texto a la derecha del círculo, limitando el ancho para evitar que cruce la línea */}
                 <div className="ml-16 pl-6 text-left max-w-[40%]">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                    Bachelor's Degree in Physics & Electronics Engineering
+                    Bachelor&apos;s Degree in Physics & Electronics Engineering
                   </h3>
                   <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    Completed my Bachelor's degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
+                    Completed my Bachelor&apos;s degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
                   </p>
                 </div>
 
@@ -98,7 +98,7 @@ export default function Home() {
                     Master in Big Data & Visual Analytics
                   </h3>
                   <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    I pursued a Master's in Big Data and Visual Analytics to expand my expertise in data science and analytics.
+                    I pursued a Master&apos;s in Big Data and Visual Analytics to expand my expertise in data science and analytics.
                   </p>
                 </div>
               </motion.div>
@@ -121,7 +121,7 @@ export default function Home() {
                     Working at Ikerlan
                   </h3>
                   <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    While completing my Master's, I started working at Ikerlan, applying my skills in electronics and data science.
+                    While completing my Master&apos;s, I started working at Ikerlan, applying my skills in electronics and data science.
                   </p>
                 </div>
                 <div className="ml-16 pl-6 text-left max-w-[40%]">
