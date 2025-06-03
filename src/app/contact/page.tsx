@@ -36,21 +36,21 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      <h1 className="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">Let&apos;s Connect</h1>
+    <section className="min-h-screen relative z-10 flex flex-col items-center justify-center px-6 py-16 text-center">
+      <h1 className="text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">Let&apos;s Connect!</h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mb-10">
-        Whether you have a project in mind, a question, or just want to say hello — my inbox is open.
+        Whether you have a project in mind, a question, or just want to say hello — my inbox is always open.
       </p>
       
-      <div className="mt-12 flex gap-8 justify-center text-gray-600 dark:text-gray-300">
-        <a href="mailto:anderrua@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">
+      <div className="mt-12 flex gap-8 justify-center text-gray-600 dark:text-gray-300 flex-wrap">
+        <a href="mailto:anderrua@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 text-xl sm:text-2xl">
           <Mail size={20} /> anderrua@gmail.com
         </a>
         <a
           href="https://github.com/anderfrua?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2"
+          className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 text-xl sm:text-2xl"
         >
           <Github size={20} /> GitHub
         </a>
@@ -58,7 +58,7 @@ export default function ContactPage() {
           href="https://www.linkedin.com/in/ander-fern%C3%A1ndez-r%C3%BAa-4a78a1314/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2"
+          className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 text-xl sm:text-2xl"
         >
           <Linkedin size={20} /> LinkedIn
         </a>
@@ -99,8 +99,6 @@ export default function ContactPage() {
         {status === 'sent' && <p className="text-green-500 text-sm mt-2">Message sent successfully!</p>}
         {status === 'error' && <p className="text-red-500 text-sm mt-2">Something went wrong. Try again.</p>}
       </form>
-
-      
     </section>
   );
 }
