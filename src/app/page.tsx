@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import TechCarousel from '@/components/TechCarousel';
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
           </h1>
           <p className="text-lg md:text-xl mb-8">
             Physicist & Electronics Engineer exploring Data Science.
-            I build smart solutions and clean user experiences.
+            I help businesses unlock insights from their data through tailored data science solutions, visualization, and predictive modeling.
           </p>
           <a
             href="#timeline"
@@ -174,6 +175,17 @@ export default function Home() {
         </motion.p>
       </section>
 
+      <section className="max-w-5xl mx-auto px-6 mb-6 text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            My Tech Stack
+          </h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
+            These are some of the tools and technologies I use to build data science projects.
+        </p>
+      </section>
+
+
+      <TechCarousel />
       
 
     </>
