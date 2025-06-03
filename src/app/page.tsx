@@ -29,7 +29,7 @@ export default function Home() {
       {/* Sección Sobre Mí y Línea de Tiempo */}
       <section
         id="timeline"
-        className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16 px-6"
+        className="min-h-screen py-16 px-6"
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-12">
