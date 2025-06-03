@@ -155,19 +155,19 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
         >
-          Hey! I'm Ander, a double-degree grad in Physics and Electronic Engineering from UPV/EHU — basically, I like to understand how the universe works and how to build cool stuff that actually works in real life.
+          Hey! I&apos;m Ander, a double-degree grad in Physics and Electronic Engineering from UPV/EHU — basically, I like to understand how the universe works and how to build cool stuff that actually works in real life.
           <br /><br />
-          Over time, I got hooked on artificial intelligence and data analysis — those magical tools that turn raw numbers into smart decisions. That passion led me to dive deeper and pursue a Master's in Big Data and Visual Analytics.
+          Over time, I got hooked on artificial intelligence and data analysis — those magical tools that turn raw numbers into smart decisions. That passion led me to dive deeper and pursue a Master&apos;s in Big Data and Visual Analytics.
           <br /><br />
-          Science fascinates me, technology excites me, and I'm genuinely pumped about the future we're creating. When I'm not coding or crunching data, you'll probably find me devouring sci-fi and fantasy books or getting lost in a good video game.
+          Science fascinates me, technology excites me, and I&apos;m genuinely pumped about the future we&apos;re creating. When I&apos;m not coding or crunching data, you&apos;ll probably find me devouring sci-fi and fantasy books or getting lost in a good video game.
           <br /><br />
-          I built this site to showcase my work, projects, and skills — and, full disclosure, because I'm pretty good at what I do 😉. Also, no drag-and-drop builders or templates here — I coded this baby from scratch, so if anything looks off, blame the programmer!
+          I built this site to showcase my work, projects, and skills — and, full disclosure, because I&apos;m pretty good at what I do 😉. Also, no drag-and-drop builders or templates here — I coded this baby from scratch, so if anything looks off, blame the programmer!
           <br /><br />
-          I'm always open to chat, collaborate, or just geek out about new tech — so don&apos;t be a stranger! Whether you're here to check out my work, hire me, or dive into a project together, let's connect and make cool things happen.
+          I&apos;m always open to chat, collaborate, or just geek out about new tech — so don&apos;t be a stranger! Whether you&apos;re here to check out my work, hire me, or dive into a project together, let&apos;s connect and make cool things happen.
           <br /><br />
-          Also, fair warning: I'm a bit of a sci-fi and fantasy nerd — expect some occasional references here and there.
+          Also, fair warning: I&apos;m a bit of a sci-fi and fantasy nerd — expect some occasional references here and there.
           <br /><br />
-          I'm constantly learning and evolving, so expect this site (and me!) to keep getting better.  
+          I&apos;m constantly learning and evolving, so expect this site (and me!) to keep getting better.  
           <br /><br />
           So, whether you&apos;re here to check out my work or geek out about AI, physics, or the latest fantasy saga, welcome aboard! Let&apos;s learn and create together.
 
