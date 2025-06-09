@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Ander Fernandez</title>
       <meta name="description" content="Personal portfolio of Ander Fernandez – physicist, electronics engineer and data science enthusiast." />
+      <link rel="icon" href="/favicon.png" type="image/png" />
       <script
         dangerouslySetInnerHTML={{
           __html: `
