@@ -346,7 +346,7 @@ return (
   <ul className="list-disc list-inside ml-6">
     <li><strong>Accuracy:</strong> 93.2%</li>
     <li><strong>Macro F1 Score:</strong> 0.91</li>
-    <li><strong>Precision:</strong> >90% for all three ion states</li>
+    <li><strong>Precision:</strong> &gt;90% for all three ion states</li>
   </ul>
 
   <p>
