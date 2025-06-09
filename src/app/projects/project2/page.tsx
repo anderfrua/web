@@ -115,7 +115,7 @@ export default function ProjectTwoPage() {
   </p>
 
   <p>
-    In social systems, we can reinterpret this idea: instead of particles, we have <strong>voters</strong>; instead of spin states, we have <strong>opinions or voting choices</strong> (e.g., vote for Party A or Party B). People tend to align with their peers, especially if there's strong social cohesion. The analogy is remarkably powerful: polarization and consensus can be modeled as “phase transitions,” just like in physical materials.
+    In social systems, we can reinterpret this idea: instead of particles, we have <strong>voters</strong>; instead of spin states, we have <strong>opinions or voting choices</strong> (e.g., vote for Party A or Party B). People tend to align with their peers, especially if there&apos;s strong social cohesion. The analogy is remarkably powerful: polarization and consensus can be modeled as “phase transitions,” just like in physical materials.
   </p>
 
   <p>
@@ -166,7 +166,7 @@ export default function ProjectTwoPage() {
   <h3 className="text-2xl font-semibold mt-8">🧮 The Variable v<sub>Q/N</sub></h3>
 
   <p>
-    In Spain's Senate elections, voters choose individual candidates, not party lists. This enables the study of personal popularity relative to collective voting behavior. For each candidate, I computed the dimensionless ratio:
+    In Spain&apos;s Senate elections, voters choose individual candidates, not party lists. This enables the study of personal popularity relative to collective voting behavior. For each candidate, I computed the dimensionless ratio:
   </p>
 
   
@@ -190,7 +190,7 @@ export default function ProjectTwoPage() {
 </div>
 
   <p>
-    Fitting the parameters (μ, σ) via maximum likelihood estimation yielded good agreement with the observed data (see figure below). The peak of the distribution was near v = 1, suggesting that in most cases, candidates attract votes proportionally to their party's average—a sign of strong party identity.
+    Fitting the parameters (μ, σ) via maximum likelihood estimation yielded good agreement with the observed data (see figure below). The peak of the distribution was near v = 1, suggesting that in most cases, candidates attract votes proportionally to their party&apos;s average—a sign of strong party identity.
   </p>
 
   <div className="text-center">
@@ -536,7 +536,7 @@ export default function ProjectTwoPage() {
   </p>
 
   <p className="text-gray-500 dark:text-gray-400 italic">
-    (This project originated as my undergraduate thesis in physics. If you're interested in the full thesis or would like to discuss the model in more depth, feel free to reach out — I'm happy to share it.)
+    (This project originated as my undergraduate thesis in physics. If you&apos;re interested in the full thesis or would like to discuss the model in more depth, feel free to reach out — I&apos;m happy to share it.)
   </p>
 </section>
 
