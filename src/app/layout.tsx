@@ -9,7 +9,7 @@ import InteractiveGridBackground from '@/components/InteractiveGridBackground';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Portfolio | Ander Fernandez',
+  title: 'Ander Fernandez',
   description: 'Personal portfolio of Ander Fernandez.',
 };
 

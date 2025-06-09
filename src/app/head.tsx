@@ -1,7 +1,7 @@
 export default function Head() {
   return (
     <>
-      <title>Portfolio | Your Name</title>
+      <title>Ander Fernandez</title>
       <meta name="description" content="Personal portfolio of Ander Fernandez – physicist, electronics engineer and data science enthusiast." />
       <script
         dangerouslySetInnerHTML={{
@@ -16,7 +16,7 @@ export default function Head() {
             })();
           `,
         }}
-      />
+      />  
     </>
   );
 }

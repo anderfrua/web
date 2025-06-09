@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
-    slug: 'project-one',
+    slug: 'project1',
     title: 'Automatic Classification of Plasma States in an ECR-Type Ion Source',
     description: `In this work I present a methodology to infer the state of the plasma in an ECR source without using any sensor that modifies its behaviour,
                   applying automatic classification techniques.`,
@@ -15,7 +15,7 @@ const projects = [
     tags: ['Condition Monitoring', 'Machine Learning', 'Particle Physics', 'Particle Accelerators'],
   },
   {
-    slug: 'project-two',
+    slug: 'project2',
     title: 'Sociophysical approach to spanish voting dynamics',
     description: `This work analyzes Spanish politics using sociophysics, focusing on three goals: evaluating its suitability for study,
                   testing if the electoral system has memory with Markov models, and proposing a physical model that reproduces electoral dynamics based on real data.`,
