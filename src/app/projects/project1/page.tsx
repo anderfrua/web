@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import 'katex/dist/katex.min.css';
-import Image from 'next/image';
+//import Image from 'next/image';
 import { InlineMath, BlockMath } from 'react-katex';
 import { useActiveSection } from '@/hooks/useActiveSection';
 
