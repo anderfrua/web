@@ -25,7 +25,7 @@ export default function ProjectTwoPage() {
   return (
     <>
       {/* Índice fijo visible en pantallas grandes */}
-      <div className="hidden lg:block fixed top-24 right-10 w-60 text-sm text-gray-700 dark:text-gray-300 leading-relaxed z-10">
+      <div className="hidden lg:block fixed top-24 right-10 w-60 text-sm text-gray-700 dark:text-gray-300 leading-relaxed z-10 ">
         <h3 className="font-semibold text-base mb-3 tracking-wide uppercase text-gray-500 dark:text-gray-400">
           Contents
         </h3>
@@ -65,7 +65,7 @@ export default function ProjectTwoPage() {
 
 
 
-        <section className="space-y-6">
+    <section className="space-y-6 text-justify">
   <h2 id="context" className="text-3xl font-bold mt-8">🧠 Context & Motivation</h2>
 
   <p>
@@ -101,7 +101,7 @@ export default function ProjectTwoPage() {
   </p>
 </section>
 
-<section className="space-y-6">
+<section className="space-y-6 text-justify">
   <h2 id="framework" className="text-3xl font-bold mt-12">🧪 Theoretical Framework</h2>
 
   <p>
@@ -156,7 +156,7 @@ export default function ProjectTwoPage() {
   </p>
 </section>
 
-<section className="space-y-6">
+<section className="space-y-6 text-justify">
   <h2 id="patterns" className="text-3xl font-bold mt-12">📊 Universal Voting Patterns in Spanish Senate Elections</h2>
 
   <p>
@@ -216,7 +216,7 @@ export default function ProjectTwoPage() {
 </section>
 
 
-<section className="space-y-6">
+<section className="space-y-6 text-justify">
   <h2 id="markov" className="text-3xl font-bold mt-12">🔄 Modeling Political Memory with Markov Chains</h2>
 
   <p>
@@ -300,7 +300,7 @@ export default function ProjectTwoPage() {
 </section>
 
 
-<section className="space-y-6">
+<section className="space-y-6 text-justify">
   <h2 id="model" className="text-3xl font-bold mt-12">🧠 Sznajd-Ising Voting Model with Feedback Dynamics</h2>
 
   <p>
@@ -313,7 +313,7 @@ export default function ProjectTwoPage() {
     The model operates on three interconnected layers, each representing a different scale of political dynamics:
   </p>
 
-  <ul className="list-disc list-inside space-y-2">
+  <ul className="list-disc list-inside space-y-2 text-justify">
     <li>
       <strong>Micro Level:</strong> A 2D grid of agents (voters), each with an opinion <InlineMath math="s_i \in \{-1, +1\}" />, updated based on their neighbors and external signals.
     </li>
@@ -390,8 +390,8 @@ export default function ProjectTwoPage() {
 </section>
 
 
-<section className="space-y-6">
-  <h2 id="results" className="text-3xl font-bold mt-12">📈 Simulation Results & Parameter Analysis</h2>
+<section className="space-y-6 text-justify">
+  <h2 id="results" className="text-3xl font-bold mt-12 ">📈 Simulation Results & Parameter Analysis</h2>
 
   <p>
     After implementing the model, I ran simulations varying key parameters
@@ -493,7 +493,7 @@ export default function ProjectTwoPage() {
   </p>
 </section>
 
-<section className="space-y-6">
+<section className="space-y-6 text-justify">
   <h2 id="conclusions" className="text-3xl font-bold mt-12">✅ Conclusions & Reflections</h2>
 
   <p>
