@@ -63,11 +63,12 @@ export default function ContactPage() {
           <Linkedin size={20} /> LinkedIn
         </a>
       </div>
+      
 
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg dark:shadow-none space-y-4 text-left"
+        className="mt-10 w-full max-w-lg bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg dark:shadow-none space-y-4 text-left"
       >
         <input
           name="name"
