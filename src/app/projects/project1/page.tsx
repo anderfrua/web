@@ -6,42 +6,70 @@ import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 import { useActiveSection } from '@/hooks/useActiveSection';
 
+import {
+  Brain,
+  Bot,
+  FlaskConical,
+  Microscope,
+  Atom,
+  SlidersHorizontal,
+  Database,
+  Filter,
+  AreaChart,
+  Shapes,
+  Zap,
+  ScanLine,
+  BarChart4,
+  FileCheck,
+  Repeat,
+  PackageSearch,
+  CheckCircle,
+} from 'lucide-react';
+
+
+
 export default function ProjectOnePage() {
 
-    const sections = [
-  { id: 'context', label: '🧠 Context & Motivation' },
-  { id: 'setup', label: '🧪 Experimental Setup' },
-  { id: 'modeling', label: '🧠 Modeling Plasma Transitions' },
-  { id: 'results', label: '📉 Evaluation & Results' },
-  { id: 'conclusions', label: '✅ Conclusions & Reflections' },
-];
+const sections = [
+    { id: 'context', label: 'Context & Motivation' },
+    { id: 'setup', label: 'Experimental Setup' },
+    { id: 'modeling', label: 'Modeling Plasma Transitions' },
+    { id: 'results', label: 'Evaluation & Results' },
+    { id: 'conclusions', label: 'Conclusions & Reflections' },
+  ];
 
 const activeId = useActiveSection(sections.map((s) => s.id));
 
 return (
   <>
     {/* Índice fijo visible en pantallas grandes */}
-    <div className="hidden lg:block fixed top-24 right-10 w-60 text-sm text-gray-700 dark:text-gray-300 leading-relaxed z-10">
-      <h3 className="font-semibold text-base mb-3 tracking-wide uppercase text-gray-500 dark:text-gray-400">
-        Contents
-      </h3>
-      <ul className="space-y-1">
-        {sections.map(({ id, label }) => (
-          <li key={id}>
-            <a
-              href={`#${id}`}
-              className={`transition-colors ${
-                activeId === id
-                  ? 'text-blue-600 dark:text-blue-400 font-semibold'
-                  : 'hover:text-blue-600 dark:hover:text-blue-400'
-              }`}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <div
+  className="hidden lg:block fixed top-24 right-2 w-48 
+             text-xs text-gray-700 dark:text-gray-300 leading-relaxed z-10
+             bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm 
+             shadow-md rounded-lg px-3 py-2"
+>
+  <h3 className="font-semibold text-[11px] mb-2 tracking-wide uppercase text-gray-500 dark:text-gray-400">
+    Contents
+  </h3>
+  <ul className="space-y-1">
+    {sections.map(({ id, label }) => (
+      <li key={id}>
+        <a
+          href={`#${id}`}
+          className={`block transition-colors ${
+            activeId === id
+              ? 'text-blue-600 dark:text-blue-400 font-semibold'
+              : 'hover:text-blue-600 dark:hover:text-blue-400'
+          }`}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
     
     <main className="max-w-4xl mx-auto px-6 py-12 text-gray-900 dark:text-white text-justify">
       <motion.h1
@@ -60,7 +88,10 @@ return (
         className="space-y-6"
       >
         <section id="context" className="space-y-6">
-          <h2 className="text-3xl font-bold mt-12">🧠 Context & Motivation</h2>
+          <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
+              <Brain className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+              Context & Motivation
+          </h2>
 
           <p>
             This project explores a real-world engineering problem in the field of applied physics:
@@ -79,7 +110,9 @@ return (
             other ion sources and real-time monitoring environments.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-8">⚙️ Ion Sources in Particle Accelerators</h3>
+          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
+              Ion Sources in Particle Accelerators
+           </h3>
 
           <p>Particle accelerators rely on a two-stage architecture:</p>
 
@@ -110,7 +143,9 @@ return (
             creating a dense and magnetically confined plasma. From there, ions can be extracted by applying electric fields.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-8"> The Problem: Classifying Plasma States</h3>
+          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
+              The Problem: Classifying Plasma States
+            </h3>
 
           <p>
             In the PIT30 source, the plasma exhibits transitions between three dominant ion configurations:{' '}
@@ -134,7 +169,10 @@ return (
             <li>Generalizing across changes in hardware configuration and signal quality.</li>
           </ul>
 
-          <h3 className="text-2xl font-semibold mt-8">🤖 Why Machine Learning?</h3>
+          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
+              Why Machine Learning?
+              <Bot className="w-6 h-6 text-blue-500 dark:text-blue-300" />
+           </h3>
 
           <p>
             The project applies both <strong>unsupervised</strong> and <strong>supervised</strong> machine learning methods to achieve its goals:
@@ -152,7 +190,10 @@ return (
         </section>
 
         <section id="setup" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12">🧪 Experimental Setup & Data Pipeline</h2>
+  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
+              <FlaskConical className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+              Experimental Setup & Data Pipeline
+   </h2>
 
   <p>
     The experiments were conducted using the <strong>PIT30 ECR ion source</strong>, a device designed for applied research at IZPILab.

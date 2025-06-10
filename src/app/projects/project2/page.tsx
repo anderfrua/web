@@ -8,6 +8,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { useActiveSection } from '@/hooks/useActiveSection';
 
+
 export default function ProjectTwoPage() {
 
     const sections = [
