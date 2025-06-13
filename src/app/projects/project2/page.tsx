@@ -8,17 +8,25 @@ import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { useActiveSection } from '@/hooks/useActiveSection';
 
+import {
+  Brain,
+  Book,
+  Globe,
+  GitCompareArrows,
+  Move3d,
+  Target,
+} from 'lucide-react';
 
 export default function ProjectTwoPage() {
 
     const sections = [
-  { id: 'context', label: '🧠 Context & Motivation' },
-  { id: 'framework', label: '🧪 Theoretical Framework' },
-  { id: 'patterns', label: '📊 Universal Patterns' },
-  { id: 'markov', label: '🔄 Markov Memory Model' },
-  { id: 'model', label: '🧠 Voting Model' },
-  { id: 'results', label: '📈 Simulation Results' },
-  { id: 'conclusions', label: '✅ Conclusions' },
+  { id: 'context', label:'Context & Motivation' },
+  { id: 'framework', label: 'Theoretical Framework' },
+  { id: 'patterns', label: 'Universal Patterns' },
+  { id: 'markov', label: 'Markov Memory Model' },
+  { id: 'model', label: 'Voting Model' },
+  { id: 'results', label: 'Simulation Results' },
+  { id: 'conclusions', label: 'Conclusions' },
 ];
 
   const activeId = useActiveSection(sections.map((s) => s.id));
@@ -77,7 +85,10 @@ export default function ProjectTwoPage() {
 
 
     <section className="space-y-6 text-justify">
-  <h2 id="context" className="text-3xl font-bold mt-8">🧠 Context & Motivation</h2>
+  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
+              <Brain className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+              Context & Motivation
+          </h2>
 
   <p>
     This project explores a provocative and interdisciplinary question: <strong>Can we use mathematical tools from physics to understand political behavior?</strong> In particular, it investigates how Spanish electoral dynamics can be modeled using the principles of <strong>sociophysics</strong>, a growing field that applies statistical mechanics to social phenomena such as opinion formation, polarization, and voting.
@@ -113,13 +124,16 @@ export default function ProjectTwoPage() {
 </section>
 
 <section className="space-y-6 text-justify">
-  <h2 id="framework" className="text-3xl font-bold mt-12">🧪 Theoretical Framework</h2>
+  <h2 id="framework" className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Book className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Theoretical Framework
+    </h2>
 
   <p>
     To describe the collective behavior of voters, I built on two main mathematical tools from physics and probability theory: <strong>Ising-like interaction models</strong> (adapted to simulate social influence), and <strong>Markov chains</strong> (used to represent transitions between political states across elections).
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📌 The Ising Model & Social Influence</h3>
+  <h3 className="text-2xl font-semibold mt-8">The Ising Model & Social Influence</h3>
 
   <p>
     The <strong>Ising model</strong> is a classical framework in statistical physics designed to study how local interactions between particles can give rise to global order. In its original version, each “particle” (or <em>spin</em>) can be in one of two states: +1 or –1. These spins sit on a grid and interact with their neighbors, trying to align with them. When many spins align, we get magnetization—a collective phenomenon.
@@ -142,7 +156,7 @@ export default function ProjectTwoPage() {
     This model captures essential aspects of social contagion, peer pressure, and opinion formation. It allows for the simulation of clusters of opinion, consensus emergence, and even stable alternation between two choices—just like in real elections.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🔄 Markov Chains & Electoral Memory</h3>
+  <h3 className="text-2xl font-semibold mt-8">Markov Chains & Electoral Memory</h3>
 
   <p>
     The second key tool is a <strong>discrete-time Markov chain</strong>, a model from probability theory that describes systems that evolve over time via transitions between states. The defining feature is the <em>Markov property</em>: the future state depends only on the present, not on the full history.
@@ -168,13 +182,16 @@ export default function ProjectTwoPage() {
 </section>
 
 <section className="space-y-6 text-justify">
-  <h2 id="patterns" className="text-3xl font-bold mt-12">📊 Universal Voting Patterns in Spanish Senate Elections</h2>
+  <h2 id="patterns" className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Globe className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Universal Voting Patterns in Spanish Senate Elections
+    </h2>
 
   <p>
     As a first empirical exploration, I analyzed over 40 years of individual voting data from the Spanish Senate elections (1977–2023) to test a hypothesis proposed by Fortunato & Castellano (2007): that the distribution of relative votes received by candidates follows a universal statistical law, <strong>independent of country or historical context</strong>.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧮 The Variable v<sub>Q/N</sub></h3>
+  <h3 className="text-2xl font-semibold mt-8">The Variable v<sub>Q/N</sub></h3>
 
   <p>
     In Spain&apos;s Senate elections, voters choose individual candidates, not party lists. This enables the study of personal popularity relative to collective voting behavior. For each candidate, I computed the dimensionless ratio:
@@ -190,10 +207,10 @@ export default function ProjectTwoPage() {
     This normalization allows for fair comparison across parties, regions, and years. A value of v<sub>Q/N</sub> ≈ 1 means the candidate received the “expected” number of votes given their party. Values above or below reflect individual popularity or rejection.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📈 Empirical Findings</h3>
+  <h3 className="text-2xl font-semibold mt-8">Empirical Findings</h3>
 
   <p>
-    After collecting and cleaning the Senate election data (using Python’s <code>pandas</code> and <code>numpy</code>), I plotted the histogram of v<sub>Q/N</sub> values for all elections combined. The result was a right-skewed bell-shaped distribution, consistent with a log-normal model:
+    After collecting and cleaning the Senate election data (using Python&apos;s <code>pandas</code> and <code>numpy</code>), I plotted the histogram of v<sub>Q/N</sub> values for all elections combined. The result was a right-skewed bell-shaped distribution, consistent with a log-normal model:
   </p>
 
 <div className="text-center my-4">
@@ -228,7 +245,10 @@ export default function ProjectTwoPage() {
 
 
 <section className="space-y-6 text-justify">
-  <h2 id="markov" className="text-3xl font-bold mt-12">🔄 Modeling Political Memory with Markov Chains</h2>
+  <h2 id="markov" className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <GitCompareArrows className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Modeling Political Memory with Markov Chains
+    </h2>
 
   <p>
     Having observed statistical regularity in voter behavior, I turned to a deeper question:
@@ -237,7 +257,7 @@ export default function ProjectTwoPage() {
     using real electoral data from 1977 to 2023.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🗳️ States and Transitions</h3>
+  <h3 className="text-2xl font-semibold mt-8">States and Transitions</h3>
 
   <p>
     I defined a simplified model of political career stages based on the outcome of general elections.
@@ -264,7 +284,7 @@ export default function ProjectTwoPage() {
     For instance, a new leader (<InlineMath math="S_1" />) has a 71% chance of being re-elected once (<InlineMath math="S_2" />).
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📐 Long-Term Behavior</h3>
+  <h3 className="text-2xl font-semibold mt-8">Long-Term Behavior</h3>
 
   <p>
     A key property of finite Markov chains is that, under mild assumptions, they converge to a
@@ -284,7 +304,7 @@ export default function ProjectTwoPage() {
     <strong>not a memoryless process</strong>, but one favoring continuity.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📊 Statistical Validation</h3>
+  <h3 className="text-2xl font-semibold mt-8">Statistical Validation</h3>
 
   <p>
     To evaluate the validity of the model, I compared the expected frequency of transitions
@@ -301,7 +321,7 @@ export default function ProjectTwoPage() {
     of Spain’s electoral leadership dynamics.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧠 Insight</h3>
+  <h3 className="text-2xl font-semibold mt-8">Insight</h3>
 
   <p>
     This analysis shows that <strong>past incumbency plays a role in future re-election probabilities</strong>.
@@ -312,13 +332,16 @@ export default function ProjectTwoPage() {
 
 
 <section className="space-y-6 text-justify">
-  <h2 id="model" className="text-3xl font-bold mt-12">🧠 Sznajd-Ising Voting Model with Feedback Dynamics</h2>
+  <h2 id="model" className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Move3d className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Sznajd-Ising Voting Model with Feedback Dynamics
+    </h2>
 
   <p>
     To go beyond empirical analysis, I developed a computational model of voting inspired by <strong>interacting particle systems</strong> in statistical physics. The model combines ideas from the <strong>Sznajd model</strong> of opinion dynamics, the <strong>Ising model</strong> of spin alignment, and feedback loops based on <strong>political success or failure</strong>.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🏗️ Model Architecture</h3>
+  <h3 className="text-2xl font-semibold mt-8">Model Architecture</h3>
 
   <p>
     The model operates on three interconnected layers, each representing a different scale of political dynamics:
@@ -336,7 +359,7 @@ export default function ProjectTwoPage() {
     </li>
   </ul>
 
-  <h3 className="text-2xl font-semibold mt-8">🧲 Micro-Level Interactions</h3>
+  <h3 className="text-2xl font-semibold mt-8">Micro-Level Interactions</h3>
 
   <p>
     At the micro level, agents follow a modified Sznajd rule: if two neighbors agree, they attempt to convince adjacent agents. If they disagree, they may promote the opposite opinion. The <strong>probability of changing state</strong> is governed by a local “tension function” analogous to the Hamiltonian in the Ising model:
@@ -371,7 +394,7 @@ export default function ProjectTwoPage() {
     <li><InlineMath math="\beta_{\text{noexito}}" /> — applied otherwise</li>
   </ul>
 
-  <h3 className="text-2xl font-semibold mt-8">⚖️ Meso & Macro Dynamics</h3>
+  <h3 className="text-2xl font-semibold mt-8">Meso & Macro Dynamics</h3>
 
   <p>
     After voters stabilize, each region elects a representative based on majority rule. Each representative receives a
@@ -384,7 +407,7 @@ export default function ProjectTwoPage() {
     influences the public mood and future elections.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧠 Interpretation of Parameters</h3>
+  <h3 className="text-2xl font-semibold mt-8">Interpretation of Parameters</h3>
 
   <ul className="list-disc list-inside space-y-1">
     <li><InlineMath math="J" /> — peer pressure strength. Higher J leads to faster consensus or polarization.</li>
@@ -402,7 +425,10 @@ export default function ProjectTwoPage() {
 
 
 <section className="space-y-6 text-justify">
-  <h2 id="results" className="text-3xl font-bold mt-12 ">📈 Simulation Results & Parameter Analysis</h2>
+  <h2 id="results" className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Target className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Simulation Results & Parameter Analysis
+    </h2>
 
   <p>
     After implementing the model, I ran simulations varying key parameters
@@ -411,7 +437,7 @@ export default function ProjectTwoPage() {
     and update their beliefs based on the leader’s performance.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🎯 Metric: Re-election Rate</h3>
+  <h3 className="text-2xl font-semibold mt-8">Metric: Re-election Rate</h3>
 
   <p>
     A central output of the model is the <strong>reelection probability</strong> of political leaders
@@ -434,7 +460,7 @@ export default function ProjectTwoPage() {
     reflecting a real-world bias where disappointment has greater influence than approval.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧲 Metric: Social Magnetization</h3>
+  <h3 className="text-2xl font-semibold mt-8">Metric: Social Magnetization</h3>
 
   <p>
     The system’s global opinion alignment is measured by the average opinion:
@@ -452,7 +478,7 @@ export default function ProjectTwoPage() {
     <InlineMath math="\mu" /> biases the direction depending on the recent perception of leadership.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📉 Parameter Sweep</h3>
+  <h3 className="text-2xl font-semibold mt-8">Parameter Sweep</h3>
 
   <p>
     To understand the stability and sensitivity of the model,
@@ -473,7 +499,7 @@ export default function ProjectTwoPage() {
     </li>
   </ul>
 
-  <h3 className="text-2xl font-semibold mt-8">🧬 Analytical Approximation</h3>
+  <h3 className="text-2xl font-semibold mt-8">Analytical Approximation</h3>
 
   <p>
     In the mean-field limit, the system satisfies the self-consistent equation:
@@ -487,7 +513,7 @@ export default function ProjectTwoPage() {
     became more sharply peaked as <InlineMath math="J" /> increased.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📚 Interpretation & Comparison</h3>
+  <h3 className="text-2xl font-semibold mt-8">Interpretation & Comparison</h3>
 
   <p>
     The model successfully reproduces macro-observables like reelection rates and opinion shifts seen in Spanish elections.
@@ -505,7 +531,7 @@ export default function ProjectTwoPage() {
 </section>
 
 <section className="space-y-6 text-justify">
-  <h2 id="conclusions" className="text-3xl font-bold mt-12">✅ Conclusions & Reflections</h2>
+  <h2 id="conclusions" className="text-3xl font-bold mt-12">Conclusions & Reflections</h2>
 
   <p>
     This project is a concrete demonstration of how <strong>tools from statistical physics and probabilistic modeling</strong> can be meaningfully applied to social systems.
