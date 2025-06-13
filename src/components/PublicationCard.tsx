@@ -15,7 +15,6 @@ export type PublicationCardProps = {
   year: string;
   abstract: string;
   pdf?: string;
-  doi?: string;
   badge?: string; // p. ej. "JACoW · ECRIS 2024"
 };
 
@@ -25,7 +24,6 @@ export default function PublicationCard({
   year,
   abstract,
   pdf,
-  doi,
   badge,
 }: PublicationCardProps) {
   return (
