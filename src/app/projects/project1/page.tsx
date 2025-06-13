@@ -10,20 +10,8 @@ import {
   Brain,
   Bot,
   FlaskConical,
-  Microscope,
   Atom,
-  SlidersHorizontal,
-  Database,
-  Filter,
-  AreaChart,
-  Shapes,
-  Zap,
-  ScanLine,
-  BarChart4,
-  FileCheck,
-  Repeat,
-  PackageSearch,
-  CheckCircle,
+  Target,
 } from 'lucide-react';
 
 
@@ -71,7 +59,15 @@ return (
 </div>
 
     
-    <main className="max-w-4xl mx-auto px-6 py-12 text-gray-900 dark:text-white text-justify">
+    <main
+  className="max-w-4xl mx-auto px-6 py-12 text-white text-justify
+             bg-[#1e293b]/60 backdrop-blur-md
+             border border-gray-700 rounded-2xl
+             shadow-lg shadow-black/30"
+>
+
+
+
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -201,7 +197,7 @@ return (
     Experimental campaigns consisted of controlled parameter sweeps while monitoring electrical and physical signals.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧱 Hardware Configuration</h3>
+  <h3 className="text-2xl font-semibold mt-8">Hardware Configuration</h3>
 
   <p>
     The plasma chamber is enclosed by two magnetic coils creating an axial magnetic field, and a set of hexapole magnets providing radial confinement.
@@ -224,7 +220,7 @@ return (
     the plasma spontaneously transitioned between ion configurations — providing natural training examples for classification.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">💾 Data Acquisition Pipeline</h3>
+  <h3 className="text-2xl font-semibold mt-8">Data Acquisition Pipeline</h3>
 
   <p>
     A Python-based acquisition system was developed to record data from National Instruments (NI) analog sensors at high frequency
@@ -244,7 +240,7 @@ return (
     <code>pandas</code> and <code>numpy</code> for cleaning, filtering and normalization.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧹 Signal Preprocessing</h3>
+  <h3 className="text-2xl font-semibold mt-8">Signal Preprocessing</h3>
 
   <p>
     Before feeding the data into machine learning algorithms, several preprocessing steps were applied:
@@ -264,7 +260,10 @@ return (
 </section>
 
 <section id="modeling" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12">🧠 Modeling Plasma Transitions</h2>
+  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Atom className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Modeling Plasma Transitions
+  </h2>
 
   <p>
     The core objective of this project was to develop a model capable of classifying plasma states in real time
@@ -274,7 +273,7 @@ return (
     and <strong>supervised classification</strong> to predict transitions on unseen data.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📊 Unsupervised Clustering</h3>
+  <h3 className="text-2xl font-semibold mt-8">Unsupervised Clustering</h3>
 
   <p>
     In the absence of labeled ground truth across the full dataset, initial modeling began with <strong>unsupervised methods</strong>
@@ -297,7 +296,7 @@ return (
     These clusters were used to generate pseudo-labels for training supervised models and to segment transitions in long signal traces.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🎯 Feature Engineering</h3>
+  <h3 className="text-2xl font-semibold mt-8">Feature Engineering</h3>
 
   <p>
     Feature extraction was critical to model success. From each raw signal segment,
@@ -316,7 +315,7 @@ return (
     and used as input for classifiers. Dimensionality was reduced via PCA or feature selection to improve generalization.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🧠 Supervised Classification</h3>
+  <h3 className="text-2xl font-semibold mt-8">Supervised Classification</h3>
 
   <p>
     Once representative segments were labeled (via unsupervised clustering and manual inspection),
@@ -337,7 +336,7 @@ return (
     achieving state classification accuracy above 93% on the test set.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📈 Transition Detection</h3>
+  <h3 className="text-2xl font-semibold mt-8">Transition Detection</h3>
 
   <p>
     To make the model practical for online monitoring, a post-processing stage was added to detect{' '}
@@ -350,7 +349,7 @@ return (
     triggering an update in the displayed plasma state. This enables near real-time state tracking with minimal latency.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🔍 Summary</h3>
+  <h3 className="text-2xl font-semibold mt-8">Summary</h3>
 
   <p>
     The modeling pipeline integrates unsupervised clustering, feature extraction,
@@ -361,14 +360,17 @@ return (
 </section>
 
 <section id="results" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12">📉 Evaluation & Results</h2>
+  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
+    <Target className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+    Evaluation & Results
+    </h2>
 
   <p>
     To assess the reliability and generalization ability of the classification pipeline, I performed a series of validation experiments across multiple acquisition sessions, hardware configurations, and signal qualities.
     The results confirm that <strong>the model can detect plasma transitions accurately and robustly</strong>, even under moderate noise and variation in operational conditions.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">✅ Classification Metrics</h3>
+  <h3 className="text-2xl font-semibold mt-8">Classification Metrics</h3>
 
   <p>
     The main performance metrics evaluated were:
@@ -394,7 +396,7 @@ return (
     Misclassifications mostly occurred in transition zones, where signal overlap is expected. These regions are naturally ambiguous and were correctly identified by the model as “changing state”.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📊 Visual Results</h3>
+  <h3 className="text-2xl font-semibold mt-8">Visual Results</h3>
 
   <p>
     The figures below (see thesis, section 5.3) show typical signal traces with model predictions overlaid. Color-coded classifications demonstrate smooth state detection across full discharge cycles. Transitions are marked by abrupt impedance shifts and changes in current slope.
@@ -404,7 +406,7 @@ return (
     The output is sufficiently stable to be displayed in real-time graphical user interfaces (GUIs) for operators, providing a trustworthy view of plasma conditions.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">🔁 Robustness Tests</h3>
+  <h3 className="text-2xl font-semibold mt-8">Robustness Tests</h3>
 
   <p>
     To evaluate robustness, I conducted simulations with:
@@ -420,7 +422,7 @@ return (
     In all scenarios, the model retained classification accuracy above 85%, confirming its capacity for generalization and resilience to experimental variation.
   </p>
 
-  <h3 className="text-2xl font-semibold mt-8">📦 Deployment Readiness</h3>
+  <h3 className="text-2xl font-semibold mt-8">Deployment Readiness</h3>
 
   <p>
     The full pipeline was packaged as a Python module with configuration options for:
@@ -438,7 +440,7 @@ return (
 </section>
 
 <section id="conclusions" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12">✅ Conclusions & Reflections</h2>
+  <h2 className="text-3xl font-bold mt-12">Conclusions & Reflections</h2>
 
   <p>
     This project demonstrates how <strong>machine learning techniques can be successfully applied to experimental physics</strong> for real-world system monitoring.
@@ -475,9 +477,22 @@ return (
   </p>
 
   <p className="text-gray-500 dark:text-gray-400 italic">
-    (This project originated as my undergraduate thesis in electronic engineering. If you’d like to read the full thesis or discuss the technical implementation in detail, feel free to contact me — I’d be happy to share it.)
+    (This project originated as my undergraduate thesis in electronic engineering. If you&apos;d like to read the full thesis or discuss the technical implementation in detail, feel free to contact me — I&apos;d be happy to share it.)
   </p>
 </section>
+
+<div className="mt-10 text-center">
+  <a
+    href="/docs/ECRIS_Article.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block px-5 py-3 text-sm font-semibold text-white
+               bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600
+               rounded-lg shadow transition-colors duration-300"
+  >
+    📄 Read the Published Paper (JACoW ECRIS 2024)
+  </a>
+</div>
 
 
 

@@ -26,28 +26,38 @@ export default function ProjectTwoPage() {
   return (
     <>
       {/* Índice fijo visible en pantallas grandes */}
-      <div className="hidden lg:block fixed top-24 right-10 w-60 text-sm text-gray-700 dark:text-gray-300 leading-relaxed z-10 ">
-        <h3 className="font-semibold text-base mb-3 tracking-wide uppercase text-gray-500 dark:text-gray-400">
-          Contents
-        </h3>
-        <ul className="space-y-1">
-          {sections.map(({ id, label }) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className={`transition-colors ${
-                  activeId === id
-                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
-                    : 'hover:text-blue-600 dark:hover:text-blue-400'
-                }`}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    <main className="max-w-4xl mx-auto px-6 py-12 text-gray-900 dark:text-white">
+      <div
+  className="hidden lg:block fixed top-24 right-2 w-48 
+             text-xs text-gray-700 dark:text-gray-300 leading-relaxed z-10
+             bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm 
+             shadow-md rounded-lg px-3 py-2"
+>
+  <h3 className="font-semibold text-[11px] mb-2 tracking-wide uppercase text-gray-500 dark:text-gray-400">
+    Contents
+  </h3>
+  <ul className="space-y-1">
+    {sections.map(({ id, label }) => (
+      <li key={id}>
+        <a
+          href={`#${id}`}
+          className={`block transition-colors ${
+            activeId === id
+              ? 'text-blue-600 dark:text-blue-400 font-semibold'
+              : 'hover:text-blue-600 dark:hover:text-blue-400'
+          }`}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+    <main
+  className="max-w-4xl mx-auto px-6 py-12 text-white text-justify
+             bg-[#1e293b]/60 backdrop-blur-md
+             border border-gray-700 rounded-2xl
+             shadow-lg shadow-black/30"
+>
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
