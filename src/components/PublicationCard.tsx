@@ -8,7 +8,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 
 export type PublicationCardProps = {
   title: string;
