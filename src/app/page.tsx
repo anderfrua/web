@@ -48,33 +48,36 @@ export default function Home() {
             <div className="space-y-16">
               {/* Carreras - 2025 */}
               <motion.div
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center justify-center md:justify-start relative"
-              >
-                {/* Círculo con la fecha */}
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg text-xl font-semibold absolute left-1/2 transform -translate-x-1/2">
-                  
-                </div>
-                {/* Texto a la derecha del círculo, limitando el ancho para evitar que cruce la línea */}
-                <div className="ml-16 pl-6 text-left max-w-[40%]">
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                    Bachelor&apos;s Degree in Physics & Electronics Engineering
-                  </h3>
-                  <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    Completed my Bachelor&apos;s degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
-                  </p>
-                </div>
+  initial={{ opacity: 0, x: -100 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6 }}
+  className="flex items-center justify-center md:justify-start relative"
+>
+  {/* Círculo con la fecha */}
+  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg text-xl font-semibold absolute left-1/2 transform -translate-x-1/2">
+    
+  </div>
 
-                <div className="ml-16 pl-6 text-right max-w-[40%]">
-                  <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    2025/02
-                  </p>
-                </div>
+  {/* Texto con fondo tipo tarjeta */}
+  <div
+    className="ml-16 pl-6 max-w-[40%] bg-white/70 dark:bg-gray-800/60
+               backdrop-blur-md border border-gray-200 dark:border-gray-700 
+               rounded-xl shadow-md px-4 py-3"
+  >
+    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+      Bachelor&apos;s Degree in Physics & Electronics Engineering
+    </h3>
+    <p className="mt-2 text-gray-700 dark:text-gray-300">
+      Completed my Bachelor's degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
+    </p>
+  </div>
 
+  {/* Fecha separada */}
+  <div className="ml-16 pl-6 text-right max-w-[40%]">
+    <p className="mt-2 text-gray-700 dark:text-gray-300">2025/02</p>
+  </div>
+</motion.div>
 
-              </motion.div>
 
               {/* Máster - 2025/02 */}
               <motion.div

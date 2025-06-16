@@ -5,7 +5,8 @@ import { useEffect, useRef } from 'react';
 export default function InteractiveGridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const points: { x: number; y: number; vx: number; vy: number }[] = [];
-  const numPoints = 100;
+  const POINT_DENSITY = 0.00035; // puntos por píxel cuadrado
+  let numPoints = 0;
   const mouse = { x: -9999, y: -9999 }; // Fuera de pantalla inicialmente
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export default function InteractiveGridBackground() {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      numPoints = Math.floor(canvas.width * canvas.height * POINT_DENSITY);
     };
     resizeCanvas();
 
@@ -61,14 +63,14 @@ export default function InteractiveGridBackground() {
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
       
-          if (dist < 80) {
-            const force = 200 / (dist * dist + 100);
+          if (dist < 50) {
+            const force = 20 / (dist * dist + 100); //200
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
       
           // Dibujar punto
-          const size = dist < 100 ? 3.5 : 2;
+          const size = dist < 50 ? 3.5 : 2;
           ctx.beginPath();
           ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
           ctx.fillStyle = dist < 100 ? '#ffcc00' : '#ffaa00';
@@ -85,7 +87,7 @@ export default function InteractiveGridBackground() {
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 100) {
               ctx.strokeStyle = `rgba(255, 204, 0, ${1 - dist / 100})`;
-              ctx.beginPath();
+              ctx.beginPath();  
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
               ctx.stroke();
