@@ -68,7 +68,7 @@ export default function Home() {
       Bachelor&apos;s Degree in Physics & Electronics Engineering
     </h3>
     <p className="mt-2 text-gray-700 dark:text-gray-300">
-      Completed my Bachelor's degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
+      Completed my Bachelor&apos;s degree in Physics and Electronics Engineering, gaining a solid foundation in science and technology.
     </p>
   </div>
 
