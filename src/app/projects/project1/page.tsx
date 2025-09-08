@@ -236,7 +236,7 @@ return (
   </ul>
 
   <p>
-    The raw time series were saved in <code>.csv</code> format with timestamps and signal metadata, and later pre-processed using
+    The raw time series were saved in <code>.csv</code> format with timestamps and signal metadata, and later pre-processed using&nbsp;
     <code>pandas</code> and <code>numpy</code> for cleaning, filtering and normalization.
   </p>
 

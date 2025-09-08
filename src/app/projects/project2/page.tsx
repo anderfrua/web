@@ -199,7 +199,7 @@ export default function ProjectTwoPage() {
 
   
     <div className="text-center my-4">
-        <BlockMath math="\displaystyle vQ/N = \frac{votes for candidate Q}{average votes for their party in that constituency}" />
+        <BlockMath math="\displaystyle vQ/N = \frac{votes&nbsp;for&nbsp;candidate&nbsp;Q}{average&nbsp;votes&nbsp;for&nbsp;their&nbsp;party&nbsp;in&nbsp;that&nbsp;constituency}" />
     </div>
   
 
@@ -252,7 +252,7 @@ export default function ProjectTwoPage() {
 
   <p>
     Having observed statistical regularity in voter behavior, I turned to a deeper question:
-    <strong> Does political power in Spain follow a memoryless process, or are future leadership outcomes influenced by past incumbency?</strong>
+    <strong> Does political power in Spain follow a memoryless process, or are future leadership outcomes influenced by past incumbency?&nbsp;</strong>
     To test this, I modeled the evolution of political leadership as a <strong>discrete-time Markov chain</strong>,
     using real electoral data from 1977 to 2023.
   </p>
@@ -390,8 +390,8 @@ export default function ProjectTwoPage() {
   </p>
 
   <ul className="list-disc list-inside space-y-1">
-    <li><InlineMath math="\beta_{\text{exito}}" /> — applied when the leader was perceived as successful</li>
-    <li><InlineMath math="\beta_{\text{noexito}}" /> — applied otherwise</li>
+    <li><InlineMath math="\beta_{\text{success}}" /> — applied when the leader was perceived as successful</li>
+    <li><InlineMath math="\beta_{\text{nosuccess}}" /> — applied otherwise</li>
   </ul>
 
   <h3 className="text-2xl font-semibold mt-8">Meso & Macro Dynamics</h3>
@@ -411,8 +411,8 @@ export default function ProjectTwoPage() {
 
   <ul className="list-disc list-inside space-y-1">
     <li><InlineMath math="J" /> — peer pressure strength. Higher J leads to faster consensus or polarization.</li>
-    <li><InlineMath math="\beta_{\text{exito}}" /> — reinforces opinion when a leader is successful.</li>
-    <li><InlineMath math="\beta_{\text{noexito}}" /> — creates destabilization when a leader fails.</li>
+    <li><InlineMath math="\beta_{\text{success}}" /> — reinforces opinion when a leader is successful.</li>
+    <li><InlineMath math="\beta_{\text{nosuccess}}" /> — creates destabilization when a leader fails.</li>
     <li><InlineMath math="\mu" /> — global field; models sentiment trends, propaganda, legacy.</li>
   </ul>
 
@@ -442,7 +442,7 @@ export default function ProjectTwoPage() {
   <p>
     A central output of the model is the <strong>reelection probability</strong> of political leaders
     over time. I ran simulations for 10,000 iterations with varying
-    <InlineMath math="\beta_{\text{exito}}" /> and <InlineMath math="\beta_{\text{noexito}}" />,
+    <InlineMath math="\beta_{\text{success}}" /> and <InlineMath math="\beta_{\text{nosuccess}}" />,
     while keeping peer influence fixed at <InlineMath math="J = 0.45" />.
   </p>
 
@@ -451,8 +451,8 @@ export default function ProjectTwoPage() {
   </p>
 
   <ul className="list-disc list-inside">
-    <li><InlineMath math="\beta_{\text{exito}} = 0.09" /></li>
-    <li><InlineMath math="\beta_{\text{noexito}} = 0.40" /></li>
+    <li><InlineMath math="\beta_{\text{success}} = 0.09" /></li>
+    <li><InlineMath math="\beta_{\text{nosuccess}} = 0.40" /></li>
   </ul>
 
   <p>
@@ -482,16 +482,16 @@ export default function ProjectTwoPage() {
 
   <p>
     To understand the stability and sensitivity of the model,
-    I performed a parameter sweep over <InlineMath math="\beta_{\text{exito}}" /> and <InlineMath math="\beta_{\text{noexito}}" />,
+    I performed a parameter sweep over <InlineMath math="\beta_{\text{success}}" /> and <InlineMath math="\beta_{\text{nosuccess}}" />,
     observing how reelection probability evolves. Results showed:
   </p>
 
   <ul className="list-disc list-inside">
     <li>
-      Re-election rate <strong>increases with</strong> <InlineMath math="\beta_{\text{exito}}" />, but plateaus quickly.
+      Re-election rate <strong>increases with</strong> <InlineMath math="\beta_{\text{success}}" />, but plateaus quickly.
     </li>
     <li>
-      Re-election rate <strong>decreases steeply with</strong> <InlineMath math="\beta_{\text{noexito}}" />,
+      Re-election rate <strong>decreases steeply with</strong> <InlineMath math="\beta_{\text{nosuccess}}" />,
       showing voters punish failure more aggressively.
     </li>
     <li>
