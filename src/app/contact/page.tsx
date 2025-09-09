@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, Github, Linkedin } from 'lucide-react'; // npm install lucide-react
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -11,27 +12,29 @@ export default function ContactPage() {
     setStatus('sending');
 
     const form = e.currentTarget;
-    const data = {
-      name: form.name.valueOf,
-      email: form.email.value,
-      message: form.message.value,
-    };
 
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const res = await emailjs.sendForm(
+        'service_vl7ow4n', // Reemplaza esto con tu Service ID de EmailJS
+        'template_dkqnmxn', // Reemplaza esto con tu Template ID de EmailJS
+        form, // Usamos el formulario HTML directamente
+        'PBDaABZrFGqVAR9S6' // Tu public key de EmailJS
+      );
 
-      if (res.ok) {
+      if (res.status === 200) {
         setStatus('sent');
-        form.reset();
+        form.reset(); // Reseteamos el formulario si el envío fue exitoso
       } else {
         setStatus('error');
       }
-    } catch {
+    } catch (error: unknown) {
       setStatus('error');
+      // Aquí verificamos si el error es un objeto con una propiedad 'message'
+      if (error instanceof Error) {
+        console.error('Error sending message:', error.message);
+      } else {
+        console.error('An unknown error occurred:', error);
+      }
     }
   };
 
@@ -41,7 +44,7 @@ export default function ContactPage() {
       <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mb-10">
         Whether you have a project in mind, a question, or just want to say hello — my inbox is always open.
       </p>
-      
+
       <div className="mt-12 flex gap-8 justify-center text-gray-600 dark:text-gray-300 flex-wrap">
         <a href="mailto:anderrua@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 text-xl sm:text-2xl">
           <Mail size={20} /> anderrua@gmail.com
@@ -63,8 +66,6 @@ export default function ContactPage() {
           <Linkedin size={20} /> LinkedIn
         </a>
       </div>
-      
-
 
       <form
         onSubmit={handleSubmit}

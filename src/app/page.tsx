@@ -104,7 +104,7 @@ export default function Home() {
                     Master in Big Data & Visual Analytics
                   </h3>
                   <p className="mt-2 text-gray-700 dark:text-gray-300">
-                    I pursued a Master&apos;s in Big Data and Visual Analytics to expand my expertise in data science and analytics.
+                    I pursued a Master&apos;s in Big Data and Artificial Intelligence to expand my expertise in data science and analytics.
                   </p>
                 </div>
               </motion.div>
@@ -162,17 +162,19 @@ export default function Home() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed text-justify"
+          className="ml-16 pl-6 bg-white/70 dark:bg-gray-800/60
+               backdrop-blur-md border border-gray-200 dark:border-gray-700 
+               rounded-xl shadow-md px-4 py-3 text-justify"
         >
           Hey! I&apos;m Ander 👋 — a double-degree grad in Physics and Electronic Engineering from UPV/EHU. Basically, I couldn&apos;t decide whether I wanted to understand how the universe works or build stuff that actually works in real life… so I chose both.  
           <br /><br />
-          Somewhere along the way, I fell into the rabbit hole of Artificial Intelligence and data analysis — magical tools that turn piles of numbers into something that almost looks like reasoning. That obsession led me to an MSc in Big Data & AI, and since then I&apos;ve bounced between projects ranging from teaching ML to recognize plasma states in a particle accelerator (which even made it into a conference as my first-author paper), to applying socio-physics to politics, and now sketching an interactive experiment called TESEO — where humans and LLMs argue about identity, free will, and who&apos;s really in charge.  
+          Somewhere along the way, I fell into the rabbit hole of Artificial Intelligence and data analysis — magical tools that turn piles of numbers into something that almost looks like reasoning. That obsession led me to an MSc in Big Data & AI, and since then I&apos;ve bounced between projects ranging from teaching ML to recognize plasma states in a particle accelerator (which even made it into a conference as my first-author paper), to applying socio-physics to politics.  
           <br /><br />
           Science fascinates me, technology excites me, and I&apos;m hopelessly curious about how intelligence (human or artificial) really works. When I&apos;m not coding, building demos, or overthinking free will, you&apos;ll probably find me reading sci-fi, losing hours in video games, or scribbling half-baked ideas that sometimes escape into things like this site.  
           <br /><br />
           I built this page from scratch (no drag-and-drop templates here), partly to show my projects and partly because I&apos;m a bit stubborn. If something looks off, blame the programmer 😅.  
           <br /><br />
-          Anyway — whether you&apos;re here to check out my work, to collaborate, or just to geek out about AI, physics, or fantasy sagas: welcome aboard 🚀.  
+          Anyway — whether you&apos;re here to check out my work, to collaborate, or just to geek out about AI, physics, or fantasy sagas: welcome aboard.  
 
         </motion.p>
       </section>
@@ -182,7 +184,7 @@ export default function Home() {
             My Tech Stack
           </h2>
           <p className="mt-2 text-gray-600 dark:text-gray-300">
-            These are some of the tools and technologies I use to build data science projects.
+            These are some of the tools and technologies I use to build Artificial Intelligence projects.
         </p>
       </section>
 
