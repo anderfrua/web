@@ -46,6 +46,7 @@ export default function PublicationsPage() {
                     regimes with 93 % accuracy. Packaged as a Python module for seamless
                     integration into control systems."
           pdf = "https://addi.ehu.es/handle/10810/73191"
+          badge = "UPV/EHU"
           
         />
 
