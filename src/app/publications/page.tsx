@@ -41,7 +41,7 @@ export default function PublicationsPage() {
         <PublicationCard
           title="Machine Learning for Plasma State Classification in ECR Ion Sources"
           venue="Bachelor’s Thesis • UPV/EHU"
-          year="2025"
+          year="2024"
           abstract="Developed a real-time ML system (MLP + PCA) that classifies hydrogen plasma
                     regimes with 93 % accuracy. Packaged as a Python module for seamless
                     integration into control systems."
