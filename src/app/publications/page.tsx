@@ -33,7 +33,7 @@ export default function PublicationsPage() {
                     the plasma in an ECR source without using any sensor that
                     modifies its behaviour. For this purpose, machine learning
                     techniques are explored."
-          pdf="/docs/ECRIS_Article.pdf"
+          pdf="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
           badge="JACoW · ECRIS 2024"
         />
 
@@ -45,7 +45,8 @@ export default function PublicationsPage() {
           abstract="Developed a real-time ML system (MLP + PCA) that classifies hydrogen plasma
                     regimes with 93 % accuracy. Packaged as a Python module for seamless
                     integration into control systems."
-          // Sin PDF público → botón “Request” opcional (omítelo para solo texto)
+          pdf = "https://addi.ehu.es/handle/10810/73191"
+          
         />
 
         {/* === THESIS – SOCIOPHYSICS =================================== */}
