@@ -58,6 +58,8 @@ export default function PublicationsPage() {
           abstract="Applied Ising-style agent simulations and Markov chains to 40 years of
                     Spanish election data, revealing long-term incumbency bias and universal
                     vote-share patterns."
+          pdf = "docs/TFG_Fisica.pdf"
+          badge = "UPV/EHU"
         />
       </div>
     </section>
