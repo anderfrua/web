@@ -168,11 +168,11 @@ export default function Home() {
         >
           Hey! I&apos;m Ander 👋 — a double-degree grad in Physics and Electronic Engineering from UPV/EHU. Basically, I couldn&apos;t decide whether I wanted to understand how the universe works or build stuff that actually works in real life… so I chose both.  
           <br /><br />
-          Somewhere along the way, I fell into the rabbit hole of Artificial Intelligence and data analysis — magical tools that turn piles of numbers into something that almost looks like reasoning. That obsession led me to an MSc in Big Data & AI, and since then I&apos;ve bounced between projects ranging from teaching ML to recognize plasma states in a particle accelerator (which even made it into a conference as my first-author paper), to applying socio-physics to politics.  
+          Somewhere along the way, I fell into the rabbit hole of Artificial Intelligence and data analysis — magical tools that turn piles of numbers into something that almost looks like reasoning. That obsession led me to a MSc in Big Data & AI, and since then I&apos;ve bounced between projects ranging from teaching ML to recognize plasma states in a particle accelerator (which even made it into a conference as my first-author paper), to applying socio-physics to politics.  
           <br /><br />
           Science fascinates me, technology excites me, and I&apos;m hopelessly curious about how intelligence (human or artificial) really works. When I&apos;m not coding, building demos, or overthinking free will, you&apos;ll probably find me reading sci-fi, losing hours in video games, or scribbling half-baked ideas that sometimes escape into things like this site.  
           <br /><br />
-          I built this page from scratch (no drag-and-drop templates here), partly to show my projects and partly because I&apos;m a bit stubborn. If something looks off, blame the programmer 😅.  
+          I built this page from scratch (no drag-and-drop templates here), partly to show my projects and partly because I&apos;m a bit stubborn. If something looks off, blame the programmer.  
           <br /><br />
           Anyway — whether you&apos;re here to check out my work, to collaborate, or just to geek out about AI, physics, or fantasy sagas: welcome aboard.  
 

@@ -467,13 +467,13 @@ return (
 
   <p>
     Importantly, this project also reflects my capacity to <strong>learn and apply concepts outside my primary academic background</strong>.
-    I had no prior experience with plasma science, ion sources, or industrial hardware systems. Yet, through independent research, lab work, and collaboration,
+    I had no prior experience with machine learning, plasma science, ion sources, or industrial hardware systems. Yet, through independent research, lab work, and collaboration,
     I was able to engage deeply with the physical phenomena, understand the experimental constraints, and translate domain knowledge into computational models.
   </p>
 
   <p>
     The ability to move across fields, structure complex problems, and deliver working solutions — both theoretically and in code —
-    is what I consider the core of good engineering.
+    is what I consider the core of good science and engineering.
   </p>
 
   <p className="text-gray-500 dark:text-gray-400 italic">
@@ -483,7 +483,8 @@ return (
 
 <div className="mt-10 text-center">
   <a
-    href="/docs/ECRIS_Article.pdf"
+    //href="/docs/ECRIS_Article.pdf"
+    href="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-block px-5 py-3 text-sm font-semibold text-white
