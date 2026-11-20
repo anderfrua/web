@@ -2,123 +2,136 @@
 
 import { useEffect, useRef } from 'react';
 
+type Point = { x: number; y: number; vx: number; vy: number };
+
+// Quiet network of nodes and links behind the content (reads as a connectome).
+const POINT_DENSITY = 0.00011; // nodes per CSS pixel²
+const LINK_DISTANCE = 130;
+const MOUSE_RADIUS = 90;
+const NODE = '232, 168, 73'; // --color-signal as RGB
+
 export default function InteractiveGridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const points: { x: number; y: number; vx: number; vy: number }[] = [];
-  const POINT_DENSITY = 0.00035; // puntos por píxel cuadrado
-  let numPoints = 0;
-  const mouse = { x: -9999, y: -9999 }; // Fuera de pantalla inicialmente
 
   useEffect(() => {
-    const canvas = canvasRef.current!;
-    const ctx = canvas.getContext('2d')!;
-    let animationFrameId: number;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      numPoints = Math.floor(canvas.width * canvas.height * POINT_DENSITY);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mouse = { x: -9999, y: -9999 };
+    let points: Point[] = [];
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+
+    const seed = () => {
+      const count = Math.min(160, Math.floor(width * height * POINT_DENSITY));
+      points = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+      }));
     };
-    resizeCanvas();
 
-    // Crear puntos
-    for (let i = 0; i < numPoints; i++) {
-      points.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-      });
-    }
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    };
+
+    const step = () => {
+      for (const p of points) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const force = 0.6 / (dist + 20);
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
+        }
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+        if (Math.hypot(p.vx, p.vy) < 0.08) {
+          const a = Math.random() * Math.PI * 2;
+          p.vx += Math.cos(a) * 0.04;
+          p.vy += Math.sin(a) * 0.04;
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+    };
 
     const draw = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < numPoints; i++) {
-          const p = points[i];
-        
-          // Damping
-          p.vx *= 0.95;
-          p.vy *= 0.95;
-        
-          // Velocidad mínima
-          const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-          const minSpeed = 0.15;
-          if (speed < minSpeed) {
-            const angle = Math.random() * 2 * Math.PI;
-            p.vx += Math.cos(angle) * minSpeed * 0.5;
-            p.vy += Math.sin(angle) * minSpeed * 0.5;
-          }
-      
-          // Movimiento
-          p.x += p.vx;
-          p.y += p.vy;
-      
-          // Rebote en bordes
-          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      
-          // Repulsión por el ratón
-          const dx = p.x - mouse.x;
-          const dy = p.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-      
-          if (dist < 50) {
-            const force = 20 / (dist * dist + 100); //200
-            p.vx += (dx / dist) * force;
-            p.vy += (dy / dist) * force;
-          }
-      
-          // Dibujar punto
-          const size = dist < 50 ? 3.5 : 2;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-          ctx.fillStyle = dist < 100 ? '#ffcc00' : '#ffaa00';
-          ctx.fill();
-        }
-    
-        // Conexiones
-        for (let i = 0; i < numPoints; i++) {
-          for (let j = i + 1; j < numPoints; j++) {
-            const a = points[i];
-            const b = points[j];
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 100) {
-              ctx.strokeStyle = `rgba(255, 204, 0, ${1 - dist / 100})`;
-              ctx.beginPath();  
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.stroke();
-            }
+      ctx.clearRect(0, 0, width, height);
+      ctx.lineWidth = 1;
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i];
+          const b = points[j];
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < LINK_DISTANCE) {
+            ctx.strokeStyle = `rgba(${NODE}, ${0.22 * (1 - d / LINK_DISTANCE)})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
           }
         }
-    
-        animationFrameId = requestAnimationFrame(draw);
-};
+      }
+      for (const p of points) {
+        const near = Math.hypot(p.x - mouse.x, p.y - mouse.y) < MOUSE_RADIUS;
+        ctx.fillStyle = `rgba(${NODE}, ${near ? 0.9 : 0.5})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, near ? 2.2 : 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
 
-    draw();
+    const loop = () => {
+      step();
+      draw();
+      frame = requestAnimationFrame(loop);
+    };
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
+    const onResize = () => {
+      resize();
+      if (reduceMotion) draw();
+    };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', resizeCanvas);
+    resize();
+    if (reduceMotion) {
+      draw();
+    } else {
+      loop();
+      window.addEventListener('mousemove', onMove);
+    }
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(frame);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+      aria-hidden
+      className="fixed inset-0 z-0 h-full w-full pointer-events-none"
     />
   );
 }

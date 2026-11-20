@@ -1,20 +1,50 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+/* The site is dark-only: `dark:` utilities always apply (html carries .dark). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-ink: #0c1220;        /* page background */
+  --color-surface: #131b2c;    /* raised panels */
+  --color-line: #243049;       /* hairlines, borders */
+  --color-text: #e6eaf1;       /* primary text */
+  --color-muted: #94a0b4;      /* secondary text */
+  --color-signal: #e8a849;     /* accent, shared with the network background */
+
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+}
 
 html {
   scroll-behavior: smooth;
-}
-
-:root {
-  --background: #0f172a; /* oscuro por defecto */
-  --foreground: #f8fafc; /* texto claro */
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.25s, color 0.25s;
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-signal) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

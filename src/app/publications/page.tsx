@@ -1,67 +1,49 @@
+import type { Metadata } from 'next';
 import PublicationCard from '@/components/PublicationCard';
-import { Metadata } from 'next';
-import { Microscope } from 'lucide-react';
-
-
 
 export const metadata: Metadata = {
-  title: 'Publications – Ander Fernandez',
-  description:
-    'Peer-reviewed papers, theses and technical articles by Ander Fernandez.',
+  title: 'Publications',
+  description: 'Conference papers and theses by Ander Fernández Rúa.',
 };
 
 export default function PublicationsPage() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-extrabold mb-10 text-center flex items-center justify-center gap-3">
-        <Microscope size={40} className="text-blue-600 dark:text-blue-400" />
-        Publications
-      </h1>
-      <p className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
-        Peer-reviewed research, conference proceedings and academic theses.
-        Feel free to reach out for additional material.
+    <section className="mx-auto max-w-5xl px-6 py-20">
+      <h1 className="font-serif text-4xl text-text sm:text-5xl">Publications</h1>
+      <p className="mt-4 mb-14 max-w-[60ch] text-muted">
+        Conference proceedings and academic theses, newest first. Get in touch if you need data or
+        additional material.
       </p>
 
-      {/* Grid responsive: 1 col móvil, 2 cols desktop */}
-      <div className="grid gap-8 md:grid-cols-2">
-        {/* === PAPER – JACoW ECRIS 2024 ================================= */}
-        <PublicationCard
-          title="Automatic Classification of Plasma States in an ECR-Type Ion Source"
-          venue="JACoW • Proceedings of the 25th International Workshop on ECR Ion Sources (ECRIS)"
-          year="2024"
-          abstract="In this paper we present a methodology to infer the state of
-                    the plasma in an ECR source without using any sensor that
-                    modifies its behaviour. For this purpose, machine learning
-                    techniques are explored."
-          pdf="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
-          badge="JACoW · ECRIS 2024"
-        />
+      <PublicationCard
+        year="2025"
+        type="Bachelor’s thesis · Physics"
+        title="Sociophysics applied to Spanish politics"
+        venue="University of the Basque Country (UPV/EHU)"
+        abstract="Uses statistical-physics tools to study Spanish electoral behaviour: Markov models to test whether the electoral system has memory, and Ising-type agent simulations that reproduce voting dynamics, polarisation and opinion formation from real data."
+        href="/docs/TFG_Fisica.pdf"
+        linkLabel="Read thesis (PDF)"
+      />
 
-        {/* === THESIS – ML + PLASMA ==================================== */}
-        <PublicationCard
-          title="Machine Learning for Plasma State Classification in ECR Ion Sources"
-          venue="Bachelor’s Thesis • UPV/EHU"
-          year="2024"
-          abstract="Developed a real-time ML system (MLP + PCA) that classifies hydrogen plasma
-                    regimes with 93 % accuracy. Packaged as a Python module for seamless
-                    integration into control systems."
-          pdf = "https://addi.ehu.es/handle/10810/73191"
-          badge = "UPV/EHU"
-          
-        />
+      <PublicationCard
+        year="2024"
+        type="Conference paper · First author"
+        title="Automatic classification of plasma state in an ECR-type ion source"
+        venue="Proceedings of the 26th International Workshop on ECR Ion Sources (ECRIS 2024), Darmstadt · JACoW"
+        abstract="A methodology to infer the state of the plasma in an ECR ion source without any sensor that perturbs it, using machine-learning classifiers trained on experimental signals."
+        href="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
+        linkLabel="Read on JACoW"
+      />
 
-        {/* === THESIS – SOCIOPHYSICS =================================== */}
-        <PublicationCard
-          title="Socio-physical Modeling of Spanish Electoral Dynamics"
-          venue="Bachelor’s Thesis • UPV/EHU"
-          year="2025"
-          abstract="Applied Ising-style agent simulations and Markov chains to 40 years of
-                    Spanish election data, revealing long-term incumbency bias and universal
-                    vote-share patterns."
-          pdf = "docs/TFG_Fisica.pdf"
-          badge = "UPV/EHU"
-        />
-      </div>
+      <PublicationCard
+        year="2024"
+        type="Bachelor’s thesis · Applied physics"
+        title="Ion source optimisation with artificial-intelligence techniques"
+        venue="University of the Basque Country (UPV/EHU) · Graded 9.4/10"
+        abstract="Real-time detection and classification of hydrogen plasma regimes in an ECR ion source from experimental signals. An MLP with PCA reaches 93% accuracy and is packaged as a Python module for integration into the control system."
+        href="https://addi.ehu.es/handle/10810/73191"
+        linkLabel="Read on ADDI"
+      />
     </section>
   );
 }
