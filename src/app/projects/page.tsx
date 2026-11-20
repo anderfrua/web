@@ -37,6 +37,45 @@ const projects = [
   },
 ];
 
+const collaborations = [
+  {
+    slug: 'project4',
+    year: '2026',
+    title: 'Who speaks Basque first',
+    description: `An agent-based model of the Basque language, built for a linguist friend’s master’s thesis: demography, schooling and everyday conversations, fitted to twenty years of survey data and used to test language policies.`,
+    image: '/images/projects/euskara/card.png',
+    cover: true,
+    tags: ['Agent-based models', 'Sociolinguistics', 'Calibration', 'Simulation'],
+  },
+];
+
+type Project = (typeof projects)[number];
+
+function Card({ slug, year, title, description, image, tags, cover }: Project) {
+  return (
+    <Link
+      href={`/projects/${slug}`}
+      className="group flex flex-col overflow-hidden rounded-sm border border-line bg-surface/80 transition-colors hover:border-muted"
+    >
+      <div className="relative aspect-[16/9] bg-white">
+        <Image src={image} alt="" fill sizes="(min-width: 768px) 480px, 100vw" className={cover ? 'object-cover' : 'object-contain p-4'} />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-sm tabular-nums text-muted">{year}</p>
+        <h3 className="mt-1 font-serif text-xl leading-snug text-text group-hover:text-signal transition-colors">
+          {title}
+        </h3>
+        <p className="mt-3 flex-1 leading-relaxed text-muted">{description}</p>
+        <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted/80">
+          {tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      </div>
+    </Link>
+  );
+}
+
 export default function ProjectsPage() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -45,29 +84,18 @@ export default function ProjectsPage() {
         Selected research projects, each with a write-up of the method and results.
       </p>
 
-      <div className="grid gap-8 md:grid-cols-2">
-        {projects.map(({ slug, year, title, description, image, tags, cover }) => (
-          <Link
-            key={slug}
-            href={`/projects/${slug}`}
-            className="group flex flex-col overflow-hidden rounded-sm border border-line bg-surface/80 transition-colors hover:border-muted"
-          >
-            <div className="relative aspect-[16/9] bg-white">
-              <Image src={image} alt="" fill sizes="(min-width: 768px) 480px, 100vw" className={cover ? 'object-cover' : 'object-contain p-4'} />
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-sm tabular-nums text-muted">{year}</p>
-              <h2 className="mt-1 font-serif text-xl leading-snug text-text group-hover:text-signal transition-colors">
-                {title}
-              </h2>
-              <p className="mt-3 flex-1 leading-relaxed text-muted">{description}</p>
-              <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted/80">
-                {tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-          </Link>
+      <h2 className="font-serif text-2xl text-text">Theses and research</h2>
+      <div className="mt-6 grid gap-8 md:grid-cols-2">
+        {projects.map((p) => (
+          <Card key={p.slug} {...p} />
+        ))}
+      </div>
+
+      <h2 className="mt-20 font-serif text-2xl text-text">Collaborations</h2>
+      <p className="mt-3 max-w-[60ch] text-muted">Smaller projects where I built the computational side of someone else’s research.</p>
+      <div className="mt-6 grid gap-8 md:grid-cols-2">
+        {collaborations.map((p) => (
+          <Card key={p.slug} {...p} />
         ))}
       </div>
     </section>
