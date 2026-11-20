@@ -6,6 +6,7 @@ import { BlockMath } from 'react-katex';
 import RegimeMap from '@/components/plasma/RegimeMap';
 import JumpDetectorDemo from '@/components/plasma/JumpDetectorDemo';
 import ModelComparison from '@/components/plasma/ModelComparison';
+import SweepExplorer from '@/components/plasma/SweepExplorer';
 
 export const metadata: Metadata = {
   title: 'Reading a plasma without touching it',
@@ -189,10 +190,16 @@ export default function PlasmaProject() {
 
       <JumpDetectorDemo />
 
-      <Figure src="/images/projects/plasma/detection-camera.png" alt="Detected jumps in real luminosity data over two gas sweeps" width={883} height={554}>
-        The detector on real data. Top: plasma luminosity during two gas sweeps, one trace per RF power level,
-        with detected jumps in red. Bottom: the gas flow being swept between 0.7 and 5 sccm.
-      </Figure>
+      <SweepExplorer
+        initial="detect"
+        caption={
+          <>
+            The detector on the real measurements. Top: plasma luminosity during two gas sweeps, one line per RF
+            power level. Bottom: the gas flow swept between 0.7 and 5 sccm. Hover a marker for its time and power;
+            the tabs switch to the views used in steps 2 and 3. Reproduced from the original data and thesis code.
+          </>
+        }
+      />
 
       {/* Filter */}
       <H2 id="filter">Step 2 · Doing it without the camera</H2>
@@ -207,10 +214,16 @@ export default function PlasmaProject() {
         adaptation, its trend, the gas trend, RF power and noise level) separates them cleanly from real jumps.
       </P>
 
-      <Figure src="/images/projects/plasma/detection-no-camera.png" alt="Jumps detected without luminosity, using adaptation and RF noise" width={920} height={551}>
-        Detection without the camera, before filtering. Black: adaptation signal; blue: RF noise; red:
-        candidate jumps. The clusters at the two minima are the false alarms that step 2 removes.
-      </Figure>
+      <SweepExplorer
+        initial="nocam"
+        caption={
+          <>
+            Detection without the camera: the same sweeps seen through the RF matching signal only. Crosses are
+            candidates the k-means filter discards as false alarms; they pile up where the gas sweep turns
+            around. Reproduced from the original data and thesis code.
+          </>
+        }
+      />
 
       {/* Classify */}
       <H2 id="classify">Step 3 · Naming the new state</H2>
@@ -226,10 +239,16 @@ export default function PlasmaProject() {
         correctly.
       </P>
 
-      <Figure src="/images/projects/plasma/kmeans-clusters.png" alt="k-means clusters of the detected jumps" width={966} height={572}>
-        Unsupervised classification with luminosity. Each colour is one of the four k-means clusters; one of
-        them gathers the false positives.
-      </Figure>
+      <SweepExplorer
+        initial="clusters"
+        caption={
+          <>
+            Unsupervised classification with luminosity: each detected jump coloured and shaped by its k-means
+            cluster (k = 4). Numbering is ordered by RF power and may differ from the thesis figure.
+            Reproduced from the original data and thesis code.
+          </>
+        }
+      />
 
       <P>
         The supervised models were a <Strong>random forest</Strong> (tuned by grid search: 10 trees, depth 5,
