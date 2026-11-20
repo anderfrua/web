@@ -24,7 +24,7 @@ function H2({ id, children }: { id: string; children: React.ReactNode }) {
 const P = ({ children }: { children: React.ReactNode }) => <p className="mt-5 leading-relaxed text-muted">{children}</p>;
 const Strong = ({ children }: { children: React.ReactNode }) => <span className="text-text">{children}</span>;
 const Eq = ({ math }: { math: string }) => (
-  <div className="my-6 overflow-x-auto text-text">
+  <div className="relative my-6 overflow-x-auto text-text">
     <BlockMath math={math} />
   </div>
 );

@@ -122,7 +122,7 @@ export default function PlasmaProject() {
         field spiral at a fixed frequency, and when 3 GHz microwaves match it they absorb energy, collide with
         the gas and ionise it:
       </P>
-      <div className="my-6 overflow-x-auto text-text">
+      <div className="relative my-6 overflow-x-auto text-text">
         <BlockMath math={String.raw`f = \frac{eB}{2\pi m_e} \;\approx\; 3\ \text{GHz} \quad \text{for } B = 110\ \text{mT}`} />
       </div>
 

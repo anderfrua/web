@@ -7,6 +7,7 @@ import CrankBench from '@/components/wear/CrankBench';
 import PeakAlign from '@/components/wear/PeakAlign';
 import PipelineFlow from '@/components/wear/PipelineFlow';
 import ModelMatrix from '@/components/wear/ModelMatrix';
+import WearCurves from '@/components/wear/WearCurves';
 
 export const metadata: Metadata = {
   title: 'A wear bench that runs itself',
@@ -25,21 +26,10 @@ function H2({ id, children }: { id: string; children: React.ReactNode }) {
 const P = ({ children }: { children: React.ReactNode }) => <p className="mt-5 leading-relaxed text-muted">{children}</p>;
 const Strong = ({ children }: { children: React.ReactNode }) => <span className="text-text">{children}</span>;
 const Eq = ({ math }: { math: string }) => (
-  <div className="my-6 overflow-x-auto text-text">
+  <div className="relative my-6 overflow-x-auto text-text">
     <BlockMath math={math} />
   </div>
 );
-
-function Figure({ src, alt, width, height, children }: { src: string; alt: string; width: number; height: number; children: React.ReactNode }) {
-  return (
-    <figure className="my-10">
-      <div className="overflow-hidden rounded-sm border border-line bg-white p-3">
-        <Image src={src} alt={alt} width={width} height={height} className="h-auto w-full" sizes="(min-width: 768px) 720px, 100vw" />
-      </div>
-      <figcaption className="mt-3 text-sm leading-relaxed text-muted">{children}</figcaption>
-    </figure>
-  );
-}
 
 const VALIDATION = [
   { value: '< 2 min', label: 'to process each five-minute block' },
@@ -118,10 +108,7 @@ export default function WearProject() {
         one bushing has lost half a millimetre and another a full one.
       </P>
 
-      <Figure src="/images/projects/wear/wear-curves.png" alt="Wear against time for five bench experiments, rising from 0 to between 0.5 and 1 mm over about 600,000 seconds" width={800} height={340}>
-        Bushing wear measured with the soft sensor in five experiments (“ensayo” is Spanish for test), over roughly
-        600,000 s, about a week, each. From the thesis.
-      </Figure>
+      <WearCurves />
 
       {/* Pipeline */}
       <H2 id="pipeline">A pipeline that waits for the bench</H2>
@@ -261,7 +248,7 @@ export default function WearProject() {
         </p>
         <p className="mt-3">
           <Strong>Data.</Strong> All bench data belongs to Ikerlan and is not published here. The model metrics and
-          wear curves are those reported in the thesis; the bench and peak-alignment figures are simulations.
+          wear curves are those reported in the thesis, the curves digitised from its figure; the bench and peak-alignment figures are simulations.
         </p>
         <p className="mt-3">
           <Strong>Credits.</Strong> Master’s thesis for the MSc in Big Data &amp; Visual Analytics at the Universidad
