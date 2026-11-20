@@ -1,505 +1,310 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import 'katex/dist/katex.min.css';
-//import Image from 'next/image';
-import { InlineMath, BlockMath } from 'react-katex';
-import { useActiveSection } from '@/hooks/useActiveSection';
-
-import {
-  Brain,
-  Bot,
-  FlaskConical,
-  Atom,
-  Target,
-} from 'lucide-react';
-
-
-
-export default function ProjectOnePage() {
-
-const sections = [
-    { id: 'context', label: 'Context & Motivation' },
-    { id: 'setup', label: 'Experimental Setup' },
-    { id: 'modeling', label: 'Modeling Plasma Transitions' },
-    { id: 'results', label: 'Evaluation & Results' },
-    { id: 'conclusions', label: 'Conclusions & Reflections' },
-  ];
-
-const activeId = useActiveSection(sections.map((s) => s.id));
-
-return (
-  <>
-    {/* Índice fijo visible en pantallas grandes */}
-    <div
-  className="hidden lg:block fixed top-24 right-2 w-48 
-             text-xs text-gray-700 dark:text-gray-300 leading-relaxed z-10
-             bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm 
-             shadow-md rounded-lg px-3 py-2"
->
-  <h3 className="font-semibold text-[11px] mb-2 tracking-wide uppercase text-gray-500 dark:text-gray-400">
-    Contents
-  </h3>
-  <ul className="space-y-1">
-    {sections.map(({ id, label }) => (
-      <li key={id}>
-        <a
-          href={`#${id}`}
-          className={`block transition-colors ${
-            activeId === id
-              ? 'text-blue-600 dark:text-blue-400 font-semibold'
-              : 'hover:text-blue-600 dark:hover:text-blue-400'
-          }`}
-        >
-          {label}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
-
-    
-    <main
-  className="max-w-4xl mx-auto px-6 py-12 text-white text-justify
-             bg-[#1e293b]/60 backdrop-blur-md
-             border border-gray-700 rounded-2xl
-             shadow-lg shadow-black/30"
->
-
-
-
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold mb-6 text-center"
-      >
-        Machine Learning for Plasma State Classification in ECR Ion Sources
-      </motion.h1>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="space-y-6"
-      >
-        <section id="context" className="space-y-6">
-          <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
-              <Brain className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-              Context & Motivation
-          </h2>
-
-          <p>
-            This project explores a real-world engineering problem in the field of applied physics:
-            the <strong>automatic detection and classification of hydrogen plasma states</strong> inside an Electron Cyclotron Resonance (ECR) ion source.
-            These sources are critical components in particle accelerators, where precise control over plasma conditions directly impacts beam quality.
-          </p>
-
-          <p>
-            The work was carried out using the <strong>PIT30</strong> ion source developed at IZPILab (UPV/EHU).
-            Rather than relying on traditional, manual signal interpretation, the project introduces a <strong>machine learning approach</strong> to
-            classify plasma transitions based on real experimental data — even in the absence of direct observables such as luminosity.
-          </p>
-
-          <p>
-            The goal was to build a robust, non-intrusive, and reproducible method that could eventually be extended to
-            other ion sources and real-time monitoring environments.
-          </p>
-
-          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
-              Ion Sources in Particle Accelerators
-           </h3>
-
-          <p>Particle accelerators rely on a two-stage architecture:</p>
-
-          <ul className="list-disc list-inside space-y-1">
-            <li><strong>Ion Source:</strong> generates the plasma that contains charged particles (e.g., protons, molecular ions).</li>
-            <li><strong>Acceleration Stage:</strong> extracts and accelerates those particles to high energy levels.</li>
-          </ul>
-
-          <p>
-            In this project, the ion source is of the <strong>Electron Cyclotron Resonance (ECR)</strong> type.
-            These devices ionize gas (in this case hydrogen) by injecting microwave power into a magnetic confinement chamber.
-            The electrons in the plasma resonate when the magnetic field matches the Larmor condition:
-          </p>
-
-          <div className="text-center my-4">
-            <BlockMath math="f = \frac{eB}{2\pi m_e}" />
-          </div>
-
-          <p>where:</p>
-          <ul className="list-disc list-inside ml-6">
-            <li><InlineMath math="e" /> is the elementary charge,</li>
-            <li><InlineMath math="B" /> is the magnetic field strength,</li>
-            <li><InlineMath math="m_e" /> is the electron mass.</li>
-          </ul>
-
-          <p>
-            When resonance is achieved, electrons absorb energy and ionize gas particles via collisions,
-            creating a dense and magnetically confined plasma. From there, ions can be extracted by applying electric fields.
-          </p>
-
-          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
-              The Problem: Classifying Plasma States
-            </h3>
-
-          <p>
-            In the PIT30 source, the plasma exhibits transitions between three dominant ion configurations:{' '}
-            <InlineMath math="\mathrm{H}^+" />, <InlineMath math="\mathrm{H}_2^+" />, and <InlineMath math="\mathrm{H}_3^+" />.
-            Each corresponds to a distinct plasma state, observable via system parameters such as
-            luminosity, RF power, and impedance.
-          </p>
-
-          <p>
-            Traditionally, experts identify these transitions <em>manually</em> by visually inspecting
-            signal plots — a subjective and non-scalable process.
-          </p>
-
-          <p>
-            The core challenge was to develop an <strong>automatic pipeline</strong> capable of:
-          </p>
-
-          <ul className="list-disc list-inside space-y-2">
-            <li>Detecting transition points in system signals.</li>
-            <li>Classifying the new plasma state accurately and non-intrusively.</li>
-            <li>Generalizing across changes in hardware configuration and signal quality.</li>
-          </ul>
-
-          <h3 className="text-2xl font-semibold mt-8 flex items-center gap-2">
-              Why Machine Learning?
-              <Bot className="w-6 h-6 text-blue-500 dark:text-blue-300" />
-           </h3>
-
-          <p>
-            The project applies both <strong>unsupervised</strong> and <strong>supervised</strong> machine learning methods to achieve its goals:
-          </p>
-
-          <ul className="list-disc list-inside space-y-1">
-            <li>Unsupervised clustering (e.g. <code>K-Means</code>, <code>DBSCAN</code>) to identify state groupings without labels.</li>
-            <li>Supervised classifiers (<code>Random Forest</code>, sequential neural networks, RNNs) to predict states from labeled jumps.</li>
-          </ul>
-
-          <p>
-            These tools allow us to <strong>replace heuristic, hand-crafted methods</strong> with reproducible algorithms that scale to larger datasets,
-            and remain robust even when key sensors (like plasma luminosity) are unavailable.
-          </p>
-        </section>
-
-        <section id="setup" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
-              <FlaskConical className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-              Experimental Setup & Data Pipeline
-   </h2>
-
-  <p>
-    The experiments were conducted using the <strong>PIT30 ECR ion source</strong>, a device designed for applied research at IZPILab.
-    The source operates under vacuum and uses a combination of magnetic confinement and microwave radiation to sustain hydrogen plasmas.
-    Experimental campaigns consisted of controlled parameter sweeps while monitoring electrical and physical signals.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Hardware Configuration</h3>
-
-  <p>
-    The plasma chamber is enclosed by two magnetic coils creating an axial magnetic field, and a set of hexapole magnets providing radial confinement.
-    A <strong>microwave generator at 2.45 GHz</strong> injects power into the chamber through a coaxial line and a directional coupler.
-  </p>
-
-  <p>
-    Key system parameters monitored during operation include:
-  </p>
-
-  <ul className="list-disc list-inside space-y-1">
-    <li><strong>Forward and Reflected RF Power</strong> — to track power coupling efficiency.</li>
-    <li><strong>DC Current</strong> in the extraction system — to infer plasma density and stability.</li>
-    <li><strong>Impedance matching</strong> — a key signal correlated with plasma transitions.</li>
-    <li><strong>Plasma Luminosity</strong> — monitored with a camera when available.</li>
-  </ul>
-
-  <p>
-    Each discharge lasted around 90 seconds, with RF power being ramped up or down gradually. During these ramps,
-    the plasma spontaneously transitioned between ion configurations — providing natural training examples for classification.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Data Acquisition Pipeline</h3>
-
-  <p>
-    A Python-based acquisition system was developed to record data from National Instruments (NI) analog sensors at high frequency
-    (500–1000 samples per second). Each measurement was stored as a time series of synchronized signals:
-  </p>
-
-  <ul className="list-disc list-inside space-y-1">
-    <li><code>forward_power</code></li>
-    <li><code>reflected_power</code></li>
-    <li><code>impedance</code></li>
-    <li><code>plasma_luminosity</code> (when available)</li>
-    <li><code>ion_current</code> (DC component)</li>
-  </ul>
-
-  <p>
-    The raw time series were saved in <code>.csv</code> format with timestamps and signal metadata, and later pre-processed using&nbsp;
-    <code>pandas</code> and <code>numpy</code> for cleaning, filtering and normalization.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Signal Preprocessing</h3>
-
-  <p>
-    Before feeding the data into machine learning algorithms, several preprocessing steps were applied:
-  </p>
-
-  <ul className="list-disc list-inside space-y-2">
-    <li><strong>Signal filtering</strong> using moving average and Savitzky–Golay filters to reduce high-frequency noise.</li>
-    <li><strong>Normalization</strong> to remove absolute scale differences between experiments.</li>
-    <li><strong>Dimensionality reduction</strong> via principal component analysis (PCA), when used for unsupervised learning.</li>
-    <li><strong>Manual annotation</strong> of transition zones on a subset of signals to generate labeled training data.</li>
-  </ul>
-
-  <p>
-    All code was developed in Python using Jupyter notebooks and saved as reproducible scripts for future integration into a
-    real-time system. The modular architecture allows flexible swapping of feature extraction or classifier components.
-  </p>
-</section>
-
-<section id="modeling" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
-    <Atom className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-    Modeling Plasma Transitions
-  </h2>
-
-  <p>
-    The core objective of this project was to develop a model capable of classifying plasma states in real time
-    based on physical signals, without relying on invasive measurements like spectroscopy or imaging.
-    This section outlines the dual strategy adopted:{' '}
-    <strong>unsupervised clustering</strong> to identify natural state groupings,
-    and <strong>supervised classification</strong> to predict transitions on unseen data.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Unsupervised Clustering</h3>
-
-  <p>
-    In the absence of labeled ground truth across the full dataset, initial modeling began with <strong>unsupervised methods</strong>
-    to uncover underlying structure in the signal space. The idea was to discover regions in feature space corresponding to dominant ion configurations:{' '}
-    <InlineMath math="\mathrm{H}^+" />, <InlineMath math="\mathrm{H}_2^+" />, and <InlineMath math="\mathrm{H}_3^+" />.
-  </p>
-
-  <p>
-    I applied <strong>Principal Component Analysis (PCA)</strong> to reduce dimensionality and visualize latent structure,
-    followed by clustering algorithms such as:
-  </p>
-
-  <ul className="list-disc list-inside space-y-1">
-    <li><code>K-Means</code> — assuming spherical clusters and fixed number of states.</li>
-    <li><code>DBSCAN</code> — for density-based clusters, capable of detecting transition anomalies.</li>
-  </ul>
-
-  <p>
-    The results revealed three main regions in signal space consistent with expected transitions.
-    These clusters were used to generate pseudo-labels for training supervised models and to segment transitions in long signal traces.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Feature Engineering</h3>
-
-  <p>
-    Feature extraction was critical to model success. From each raw signal segment,
-    I computed a set of <strong>time-domain features</strong> including:
-  </p>
-
-  <ul className="list-disc list-inside space-y-1">
-    <li>Mean, standard deviation, and higher-order moments.</li>
-    <li>Slope and trend of power curves during transitions.</li>
-    <li>Impedance variability and discontinuities.</li>
-    <li>Signal derivatives and zero-crossing rates.</li>
-  </ul>
-
-  <p>
-    These features were concatenated into a compact vector per segment, normalized across the dataset,
-    and used as input for classifiers. Dimensionality was reduced via PCA or feature selection to improve generalization.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Supervised Classification</h3>
-
-  <p>
-    Once representative segments were labeled (via unsupervised clustering and manual inspection),
-    I trained <strong>supervised learning models</strong> to recognize plasma states in real time.
-    Several algorithms were evaluated:
-  </p>
-
-  <ul className="list-disc list-inside space-y-1">
-    <li><code>Random Forest</code> — robust to noise and interpretable via feature importance.</li>
-    <li><code>Gradient Boosting</code> — for improved accuracy on imbalanced segments.</li>
-    <li><code>Multilayer Perceptrons (MLPs)</code> — simple neural networks for feedforward classification.</li>
-    <li><code>Recurrent Neural Networks (RNNs)</code> — for modeling temporal dependencies across signal windows.</li>
-  </ul>
-
-  <p>
-    Each model was trained and validated using k-fold cross-validation, with performance measured via accuracy,
-    F1 score, and confusion matrices. The best performance was obtained by the <strong>MLP + PCA pipeline</strong>,
-    achieving state classification accuracy above 93% on the test set.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Transition Detection</h3>
-
-  <p>
-    To make the model practical for online monitoring, a post-processing stage was added to detect{' '}
-    <strong>sharp discontinuities in signal features</strong> that suggest transitions between plasma regimes.
-    This was implemented with a sliding window and a statistical change point detection algorithm.
-  </p>
-
-  <p>
-    When a significant change was detected, a new feature vector was extracted and passed through the classifier,
-    triggering an update in the displayed plasma state. This enables near real-time state tracking with minimal latency.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-8">Summary</h3>
-
-  <p>
-    The modeling pipeline integrates unsupervised clustering, feature extraction,
-    supervised classification, and transition detection into a single modular framework.
-    It enables autonomous tracking of plasma dynamics, reduces reliance on manual interpretation,
-    and opens the door to integration with feedback control systems.
-  </p>
-</section>
-
-<section id="results" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12 flex items-center gap-3">
-    <Target className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-    Evaluation & Results
+import { BlockMath } from 'react-katex';
+import RegimeMap from '@/components/plasma/RegimeMap';
+import JumpDetectorDemo from '@/components/plasma/JumpDetectorDemo';
+import ModelComparison from '@/components/plasma/ModelComparison';
+
+export const metadata: Metadata = {
+  title: 'Reading a plasma without touching it',
+  description:
+    'Machine learning that detects and classifies state changes in the hydrogen plasma of an ECR ion source using only the signals the source already produces.',
+};
+
+function Figure({
+  src,
+  alt,
+  width,
+  height,
+  children,
+  photo = false,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  children: React.ReactNode;
+  photo?: boolean;
+}) {
+  return (
+    <figure className={`my-10 ${photo ? 'max-w-md' : ''}`}>
+      <div className={`overflow-hidden rounded-sm border border-line ${photo ? '' : 'bg-white p-3'}`}>
+        <Image src={src} alt={alt} width={width} height={height} className="h-auto w-full" sizes="(min-width: 768px) 720px, 100vw" />
+      </div>
+      <figcaption className="mt-3 text-sm leading-relaxed text-muted">{children}</figcaption>
+    </figure>
+  );
+}
+
+function H2({ id, children }: { id: string; children: React.ReactNode }) {
+  return (
+    <h2 id={id} className="mt-20 scroll-mt-24 font-serif text-3xl leading-tight text-text">
+      {children}
     </h2>
+  );
+}
 
-  <p>
-    To assess the reliability and generalization ability of the classification pipeline, I performed a series of validation experiments across multiple acquisition sessions, hardware configurations, and signal qualities.
-    The results confirm that <strong>the model can detect plasma transitions accurately and robustly</strong>, even under moderate noise and variation in operational conditions.
-  </p>
+const P = ({ children }: { children: React.ReactNode }) => <p className="mt-5 leading-relaxed text-muted">{children}</p>;
+const Strong = ({ children }: { children: React.ReactNode }) => <span className="text-text">{children}</span>;
 
-  <h3 className="text-2xl font-semibold mt-8">Classification Metrics</h3>
+export default function PlasmaProject() {
+  return (
+    <article className="mx-auto max-w-3xl px-6 pb-24 pt-16">
+      <Link href="/projects" className="text-sm text-muted hover:text-text">
+        ← All projects
+      </Link>
 
-  <p>
-    The main performance metrics evaluated were:
-  </p>
+      {/* Header */}
+      <header className="mt-8">
+        <p className="text-muted">2024 · Bachelor’s thesis in electronic engineering, IZPILab, UPV/EHU</p>
+        <h1 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-text sm:text-6xl">
+          Reading a plasma without touching it
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
+          A machine-learning system that tells which state the hydrogen plasma inside a particle-accelerator
+          ion source is in, using only signals the source already produces. Presented as a first-author paper
+          at ECRIS 2024 in Darmstadt.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3 text-sm">
+          <a
+            href="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-sm bg-signal px-4 py-2 font-medium text-ink hover:bg-[#f0bb68]"
+          >
+            Read the paper
+          </a>
+          <a
+            href="https://addi.ehu.es/handle/10810/73191"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-sm border border-line px-4 py-2 text-text hover:border-muted"
+          >
+            Read the thesis
+          </a>
+        </div>
+      </header>
 
-  <ul className="list-disc list-inside space-y-1">
-    <li><strong>Accuracy</strong>: proportion of correctly classified state segments.</li>
-    <li><strong>Precision / Recall / F1 Score</strong>: to handle class imbalance.</li>
-    <li><strong>Confusion Matrix</strong>: for visualizing misclassification patterns.</li>
-  </ul>
+      <Figure src="/images/projects/plasma/source.png" alt="The PIT30 ion source on the LINAC7 test bench at IZPILab" width={524} height={458} photo>
+        PIT30, the ion source where the data was taken, on the LINAC7 bench at IZPILab (UPV/EHU).
+      </Figure>
 
-  <p>
-    The best-performing model (MLP + PCA) achieved:
-  </p>
+      {/* In short */}
+      <section aria-label="Summary" className="grid gap-6 border-y border-line py-8 sm:grid-cols-3">
+        <div>
+          <p className="text-sm text-muted">The problem</p>
+          <p className="mt-1 text-text">Plasma states are judged by eye, from a camera you lose once the source is built in.</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted">The idea</p>
+          <p className="mt-1 text-text">Replace the camera with two RF signals the source always measures.</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted">The result</p>
+          <p className="mt-1 text-text">97% F1 without the camera, and a model that still works on a modified source.</p>
+        </div>
+      </section>
 
-  <ul className="list-disc list-inside ml-6">
-    <li><strong>Accuracy:</strong> 93.2%</li>
-    <li><strong>Macro F1 Score:</strong> 0.91</li>
-    <li><strong>Precision:</strong> &gt;90% for all three ion states</li>
-  </ul>
+      {/* Context */}
+      <H2 id="context">An accelerator starts with a plasma</H2>
+      <P>
+        Every particle accelerator begins with a source of charged particles. At the UPV/EHU’s IZPILab that
+        source is <Strong>PIT30</Strong>, the first stage of LINAC7, a compact linear accelerator designed to
+        produce radiopharmaceutical isotopes for medicine.
+      </P>
+      <P>
+        PIT30 is an electron cyclotron resonance (ECR) source. Hydrogen gas flows into a small chamber
+        surrounded by a Halbach array of permanent magnets that creates a 110 mT field. Electrons in that
+        field spiral at a fixed frequency, and when 3 GHz microwaves match it they absorb energy, collide with
+        the gas and ionise it:
+      </P>
+      <div className="my-6 overflow-x-auto text-text">
+        <BlockMath math={String.raw`f = \frac{eB}{2\pi m_e} \;\approx\; 3\ \text{GHz} \quad \text{for } B = 110\ \text{mT}`} />
+      </div>
 
-  <p>
-    Misclassifications mostly occurred in transition zones, where signal overlap is expected. These regions are naturally ambiguous and were correctly identified by the model as “changing state”.
-  </p>
+      <Figure src="/images/projects/plasma/chamber.png" alt="Cross-section of the PIT30 plasma chamber" width={968} height={451}>
+        Cross-section of the chamber, about 600 mm end to end: (1) gas inlet, (2) RF port, (3) magnets,
+        (4) plasma chamber, (5) extraction electrodes, (6) vacuum pump, (7) pressure sensor, (8) beam diagnostics.
+      </Figure>
 
-  <h3 className="text-2xl font-semibold mt-8">Visual Results</h3>
+      <P>
+        The plasma does not sit still. Depending on the microwave power and the amount of gas, it settles into
+        one of three regimes, each dominated by a different ion: H⁺, H₂⁺ or H₃⁺. For an accelerator that wants
+        protons, knowing which regime you are in is the whole game.
+      </P>
 
-  <p>
-    The figures below (see thesis, section 5.3) show typical signal traces with model predictions overlaid. Color-coded classifications demonstrate smooth state detection across full discharge cycles. Transitions are marked by abrupt impedance shifts and changes in current slope.
-  </p>
+      <RegimeMap />
 
-  <p>
-    The output is sufficiently stable to be displayed in real-time graphical user interfaces (GUIs) for operators, providing a trustworthy view of plasma conditions.
-  </p>
+      {/* Problem */}
+      <H2 id="problem">The problem: a judgement call and a camera</H2>
+      <P>
+        Until now, a trained technician watched the signals during a power and gas sweep and decided, by eye,
+        when the plasma had jumped and to which state. The clearest clue is the light the plasma emits,
+        recorded by a camera looking into the chamber. Once the source is bolted into the accelerator that
+        view is usually gone.
+      </P>
+      <P>
+        So the question was twofold: can a model make that call objectively, and can it do it{' '}
+        <Strong>without the camera</Strong>, from signals that do not perturb the plasma?
+      </P>
 
-  <h3 className="text-2xl font-semibold mt-8">Robustness Tests</h3>
+      {/* Insight */}
+      <H2 id="insight">The insight: the RF line already knows</H2>
+      <P>
+        Each sweep logged nine signals, from forward and reflected RF power to gas flow and the camera’s
+        luminosity. Cross-correlating them showed that luminosity tracks one of them closely:{' '}
+        <Strong>the RF matching signal (“adaptation”), with r = 0.67</Strong>. On top of that, every state jump
+        comes with a burst of RF noise. Together, those two always-available signals can stand in for the
+        camera.
+      </P>
+      <P>
+        A first attempt to classify every sample directly into three states failed: at low power it missed the
+        jumps, at high power it could not tell them apart. So I split the problem into three steps.
+      </P>
 
-  <p>
-    To evaluate robustness, I conducted simulations with:
-  </p>
+      <ol className="mt-8 grid gap-4 sm:grid-cols-3">
+        {[
+          ['Detect', 'Find the moments the plasma jumps, from changes in the slope of the signal.'],
+          ['Filter', 'Throw away false alarms, such as the turning points of the gas sweep.'],
+          ['Classify', 'Decide which kind of jump it was, i.e. which state the plasma moved into.'],
+        ].map(([t, d], i) => (
+          <li key={t} className="border-t border-signal/60 pt-3">
+            <p className="text-sm tabular-nums text-muted">Step {i + 1}</p>
+            <p className="font-medium text-text">{t}</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted">{d}</p>
+          </li>
+        ))}
+      </ol>
 
-  <ul className="list-disc list-inside space-y-1">
-    <li>Downsampled and noisy versions of signals.</li>
-    <li>Modified discharge ramps and altered microwave coupling.</li>
-    <li>Loss of luminosity input — the classifier still functioned based on impedance and current alone.</li>
-  </ul>
+      {/* Detect */}
+      <H2 id="detect">Step 1 · Detecting a jump</H2>
+      <P>
+        A state change shows up as a sudden change in how fast the signal is growing. The detector fits a
+        straight line to every block of 80 samples (about one second) and compares the change in slope between
+        consecutive blocks with the average change in the surrounding 100 seconds. Comparing against the local
+        average, rather than a fixed value, keeps isolated spikes and slow drifts from triggering it.
+      </P>
 
-  <p>
-    In all scenarios, the model retained classification accuracy above 85%, confirming its capacity for generalization and resilience to experimental variation.
-  </p>
+      <JumpDetectorDemo />
 
-  <h3 className="text-2xl font-semibold mt-8">Deployment Readiness</h3>
+      <Figure src="/images/projects/plasma/detection-camera.png" alt="Detected jumps in real luminosity data over two gas sweeps" width={883} height={554}>
+        The detector on real data. Top: plasma luminosity during two gas sweeps, one trace per RF power level,
+        with detected jumps in red. Bottom: the gas flow being swept between 0.7 and 5 sccm.
+      </Figure>
 
-  <p>
-    The full pipeline was packaged as a Python module with configuration options for:
-  </p>
+      {/* Filter */}
+      <H2 id="filter">Step 2 · Doing it without the camera</H2>
+      <P>
+        Without luminosity, the detector runs on the adaptation signal and, independently, looks for peaks in
+        the RF noise with a prominence threshold. Only moments where both agree count as jumps. That catches the
+        real transitions but also flags the minima of the adaptation signal, where the gas sweep turns around.
+      </P>
+      <P>
+        Those false alarms have a different signature: the gas flow is changing direction and the adaptation is
+        at a minimum. A two-cluster k-means on features from a 100-second window around each candidate (mean
+        adaptation, its trend, the gas trend, RF power and noise level) separates them cleanly from real jumps.
+      </P>
 
-  <ul className="list-disc list-inside space-y-1">
-    <li>Window size and overlap for feature extraction.</li>
-    <li>Choice of classifier and preprocessing method.</li>
-    <li>Thresholds for transition detection sensitivity.</li>
-  </ul>
+      <Figure src="/images/projects/plasma/detection-no-camera.png" alt="Jumps detected without luminosity, using adaptation and RF noise" width={920} height={551}>
+        Detection without the camera, before filtering. Black: adaptation signal; blue: RF noise; red:
+        candidate jumps. The clusters at the two minima are the false alarms that step 2 removes.
+      </Figure>
 
-  <p>
-    It can be integrated with data acquisition systems and eventually linked to actuator controls for closed-loop plasma management — an avenue for future research.
-  </p>
-</section>
+      {/* Classify */}
+      <H2 id="classify">Step 3 · Naming the new state</H2>
+      <P>
+        With the jumps found, each one is described by features computed around it (signal level, size of the
+        change, gas flow and its trend, RF power) and classified. I compared an unsupervised approach with three
+        supervised ones, scored with F1 against the technician’s labels.
+      </P>
+      <P>
+        <Strong>k-means</Strong> needs no labels at all. The elbow method suggested four clusters rather than
+        three, and the fourth turned out to be useful: it collected the remaining false positives. With
+        luminosity it reproduced the human classification well; without it, it classified 78% of the jumps
+        correctly.
+      </P>
 
-<section id="conclusions" className="space-y-6">
-  <h2 className="text-3xl font-bold mt-12">Conclusions & Reflections</h2>
+      <Figure src="/images/projects/plasma/kmeans-clusters.png" alt="k-means clusters of the detected jumps" width={966} height={572}>
+        Unsupervised classification with luminosity. Each colour is one of the four k-means clusters; one of
+        them gathers the false positives.
+      </Figure>
 
-  <p>
-    This project demonstrates how <strong>machine learning techniques can be successfully applied to experimental physics</strong> for real-world system monitoring.
-    By combining signal processing, unsupervised clustering, supervised classification, and domain-specific knowledge,
-    I was able to build a system that classifies hydrogen plasma states in an ECR ion source with high accuracy and robustness.
-  </p>
+      <P>
+        The supervised models were a <Strong>random forest</Strong> (tuned by grid search: 10 trees, depth 5,
+        Gini, evaluated with 5-fold cross-validation), a <Strong>dense neural network</Strong> (512, 256 and
+        128 units with batch normalisation, dropout and L2 regularisation) and an <Strong>LSTM</Strong> over
+        sequences of samples.
+      </P>
 
-  <p>
-    From an engineering standpoint, the pipeline addresses a genuine practical need: <strong>non-intrusive, real-time identification of plasma regimes</strong>,
-    which traditionally relied on expert judgment and non-scalable heuristics. It replaces that approach with a modular and reproducible solution that can be adapted to future devices or research setups.
-  </p>
+      <ModelComparison
+        ariaLabel="F1 scores by model, with and without the camera"
+        rows={[
+          { model: 'Random forest', detail: '10 trees, depth 5', cam: 98, noCam: 97 },
+          { model: 'Dense network', detail: '512–256–128', cam: 76, noCam: 64 },
+          { model: 'LSTM', detail: '200 hidden units', cam: 53, noCam: 54 },
+        ]}
+        caption={
+          <>
+            F1 score on the original dataset. The random forest barely notices the camera is gone. The LSTM
+            does poorly because it classifies whole sequences, which leaves it far fewer training examples.
+          </>
+        }
+      />
 
-  <p>
-    Technically, the work strengthened my ability to:
-  </p>
+      {/* Twist */}
+      <H2 id="generalisation">The twist: the best model on paper wasn’t</H2>
+      <P>
+        Midway through, the source was upgraded, and its behaviour changed enough to treat it as a different
+        machine. That made a good test: would the models still work on a source they had never seen?
+      </P>
+      <P>
+        Detection did, after recalibrating two parameters. Classification was another story. The random forest
+        and k-means, so accurate before, <Strong>dropped below 50% F1</Strong>: they had learned the exact
+        shape of the original sweeps. The dense network, trained only on the old data, kept 79% with the
+        camera. Retrained on both datasets, it reached <Strong>84% with the camera and 85% without</Strong>.
+        It no longer needed the camera at all.
+      </P>
 
-  <ul className="list-disc list-inside space-y-2">
-    <li>Design and execute experimental protocols in plasma physics and electrical diagnostics</li>
-    <li>Process and analyze high-frequency multichannel time-series data</li>
-    <li>Develop feature engineering pipelines tailored to physical signal behavior</li>
-    <li>Train, evaluate, and interpret machine learning models on real-world datasets</li>
-    <li>Communicate technical findings with clarity and precision across disciplines</li>
-  </ul>
+      <ModelComparison
+        ariaLabel="F1 scores on the modified source"
+        rows={[
+          { model: 'Random forest', detail: 'trained on original', cam: 45, noCam: 45 },
+          { model: 'Dense network', detail: 'trained on original', cam: 79, noCam: 64 },
+          { model: 'Dense network', detail: 'retrained on both', cam: 84, noCam: 85 },
+        ]}
+        caption={<>F1 score after the source was modified. Striped bars are only known to be below 50%; the thesis does not report them more precisely.</>}
+      />
 
-  <p>
-    Importantly, this project also reflects my capacity to <strong>learn and apply concepts outside my primary academic background</strong>.
-    I had no prior experience with machine learning, plasma science, ion sources, or industrial hardware systems. Yet, through independent research, lab work, and collaboration,
-    I was able to engage deeply with the physical phenomena, understand the experimental constraints, and translate domain knowledge into computational models.
-  </p>
+      <P>
+        The lesson I took from it: the highest score on one dataset is not the same as the most useful model.
+        For a system that has to run on real hardware that changes, how well it generalises matters more.
+      </P>
 
-  <p>
-    The ability to move across fields, structure complex problems, and deliver working solutions — both theoretically and in code —
-    is what I consider the core of good science and engineering.
-  </p>
+      {/* Next */}
+      <H2 id="next">What I would do next</H2>
+      <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed text-muted marker:text-signal/70">
+        <li>Collect more sweeps with more jumps per sweep: the data, not the models, was the bottleneck.</li>
+        <li>Retrain automatically as new experiments are run, so the model follows the source as it changes.</li>
+        <li>Add live anomaly detection to flag when something in the source is going wrong.</li>
+        <li>Go from describing the state to steering it: learn the most efficient way to move the source into a target regime.</li>
+      </ul>
 
-  <p className="text-gray-500 dark:text-gray-400 italic">
-    (This project originated as my undergraduate thesis in electronic engineering. If you&apos;d like to read the full thesis or discuss the technical implementation in detail, feel free to contact me — I&apos;d be happy to share it.)
-  </p>
-</section>
-
-<div className="mt-10 text-center">
-  <a
-    //href="/docs/ECRIS_Article.pdf"
-    href="https://proceedings.jacow.org/ecris2024/doi/JACoW-ECRIS2024-MOP08.html"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block px-5 py-3 text-sm font-semibold text-white
-               bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600
-               rounded-lg shadow transition-colors duration-300"
-  >
-    📄 Read the Published Paper (JACoW ECRIS 2024)
-  </a>
-</div>
-
-
-
-
-      </motion.section>
-    </main>
-    </>
+      {/* Footer */}
+      <section className="mt-20 grid gap-8 border-t border-line pt-8 text-sm sm:grid-cols-2">
+        <div>
+          <p className="text-muted">Tools</p>
+          <p className="mt-1 text-text">Python, scikit-learn, TensorFlow/Keras, SciPy, Docker, Git</p>
+        </div>
+        <div>
+          <p className="text-muted">Credits</p>
+          <p className="mt-1 leading-relaxed text-text">
+            Supervised by Iñigo Arredondo and Raquel Justo. Measurements by Pello Usabiaga, Jon Vivas and Jorge
+            Feuchtwanger. Funded by the Basque Government’s Elkartek programme (LINAC7).
+          </p>
+        </div>
+      </section>
+    </article>
   );
 }

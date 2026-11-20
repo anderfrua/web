@@ -40,7 +40,7 @@ export default function PublicationsPage() {
         type="Bachelor’s thesis · Applied physics"
         title="Ion source optimisation with artificial-intelligence techniques"
         venue="University of the Basque Country (UPV/EHU)"
-        abstract="Real-time detection and classification of hydrogen plasma regimes in an ECR ion source from experimental signals. An MLP with PCA reaches 93% accuracy and is packaged as a Python module for integration into the control system."
+        abstract="Automatic detection and classification of state changes in the hydrogen plasma of the PIT30 ECR ion source, from experimental signals and without perturbing the plasma. Compares k-means, DBSCAN, random forests and neural networks, and tests how well they generalise to a modified source."
         href="https://addi.ehu.es/handle/10810/73191"
         linkLabel="Read on ADDI"
       />

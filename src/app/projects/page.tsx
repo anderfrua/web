@@ -11,11 +11,11 @@ const projects = [
   {
     slug: 'project1',
     year: '2024',
-    title: 'Automatic Classification of Plasma States in an ECR-Type Ion Source',
-    description: `In this work I present a methodology to infer the state of the plasma in an ECR source without using any sensor that modifies its behaviour, applying automatic classification techniques.`,
-    image: '/images/partacc.png',
+    title: 'Reading a plasma without touching it',
+    description: `Machine learning that detects and classifies state changes in the hydrogen plasma of a particle-accelerator ion source, using only signals the source already measures. First-author paper at ECRIS 2024.`,
+    image: '/images/projects/plasma/source.png',
     cover: true,
-    tags: ['Condition Monitoring', 'Machine Learning', 'Particle Physics', 'Particle Accelerators'],
+    tags: ['Plasma physics', 'Time series', 'Machine learning', 'Particle accelerators'],
   },
   {
     slug: 'project2',
