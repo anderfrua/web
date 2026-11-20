@@ -35,6 +35,9 @@ const projects = [
     cover: true,
     tags: ['Predictive maintenance', 'Data pipelines', 'Deep learning', 'Dashboards'],
   },
+];
+
+const collaborations = [
   {
     slug: 'project4',
     year: '2026',
@@ -45,7 +48,6 @@ const projects = [
     tags: ['Agent-based models', 'Sociolinguistics', 'Calibration', 'Simulation'],
   },
 ];
-
 
 type Project = (typeof projects)[number];
 
@@ -60,9 +62,9 @@ function Card({ slug, year, title, description, image, tags, cover }: Project) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <p className="text-sm tabular-nums text-muted">{year}</p>
-        <h2 className="mt-1 font-serif text-xl leading-snug text-text group-hover:text-signal transition-colors">
+        <h3 className="mt-1 font-serif text-xl leading-snug text-text group-hover:text-signal transition-colors">
           {title}
-        </h2>
+        </h3>
         <p className="mt-3 flex-1 leading-relaxed text-muted">{description}</p>
         <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted/80">
           {tags.map((tag) => (
@@ -82,8 +84,17 @@ export default function ProjectsPage() {
         Selected research projects, each with a write-up of the method and results.
       </p>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <h2 className="font-serif text-2xl text-text">Theses and research</h2>
+      <div className="mt-6 grid gap-8 md:grid-cols-2">
         {projects.map((p) => (
+          <Card key={p.slug} {...p} />
+        ))}
+      </div>
+
+      <h2 className="mt-20 font-serif text-2xl text-text">Collaborations</h2>
+      <p className="mt-3 max-w-[60ch] text-muted">Projects where I built the computational side of someone else’s research.</p>
+      <div className="mt-6 grid gap-8 md:grid-cols-2">
+        {collaborations.map((p) => (
           <Card key={p.slug} {...p} />
         ))}
       </div>
