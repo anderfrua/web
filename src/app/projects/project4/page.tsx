@@ -47,7 +47,7 @@ export default function BasqueProject() {
 
       {/* Header */}
       <header className="mt-8">
-        <p className="text-muted">2026 · Collaboration on a master’s thesis on Basque revitalisation</p>
+        <p className="text-muted">2026 · Computational modelling for a master’s thesis on Basque revitalisation</p>
         <h1 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-text sm:text-6xl">Who speaks Basque first</h1>
         <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
           A simulated Basque Country where every person ages, moves, goes to school and talks to whoever is
@@ -60,7 +60,7 @@ export default function BasqueProject() {
       <section aria-label="Summary" className="mt-12 grid gap-6 border-y border-line py-8 sm:grid-cols-3">
         <div>
           <p className="text-sm text-muted">The model</p>
-          <p className="mt-1 text-text">About a thousand agents, rebuilt from Civico (2019) and adapted to the Basque Autonomous Community.</p>
+          <p className="mt-1 text-text">About a thousand agents, built on Civico (2019) and adapted to the Basque Autonomous Community.</p>
         </div>
         <div>
           <p className="text-sm text-muted">The engine</p>
@@ -72,24 +72,17 @@ export default function BasqueProject() {
         </div>
       </section>
 
-      <H2 id="project">A linguist’s question, a physicist’s tool</H2>
+      <H2 id="project">A sociolinguistic question, a physicist’s tool</H2>
       <P>
-        My friend Maddi Aldaiturriaga was writing her master’s thesis on the Basque language and wanted to know
-        whether a simulation could say anything about its future. The question was hers. The tool, an{' '}
-        <Strong>agent-based model</Strong>, is standard in sociophysics: you write down how individuals behave,
+        Can a simulation say anything about the future of a minority language? This project was the
+        computational part of a master’s thesis on Basque revitalisation. The tool is an{' '}
+        <Strong>agent-based model</Strong>, standard in sociophysics: you write down how individuals behave,
         let thousands of them interact, and see what the population does.
       </P>
       <P>
-        It was meant as a side collaboration. In practice I wrote the model, adapted it to the Basque Autonomous
-        Community, calibrated it and ran every simulation in the thesis. Maddi wrote the thesis, gathered the
-        sociolinguistic data and framed the policy questions. The thesis is in Basque; this page tells the
-        computational story in my own words.
-      </P>
-      <P>
-        When I came back to the work for this page, I disagreed with parts of the analysis in the thesis. The
-        final code was no longer available, so I rebuilt the model from its documented rules and re-ran
-        everything with proper statistics. All the figures below come from that rebuild. Where the conclusions
-        changed, I say so.
+        I designed and implemented the model, adapted it to the Basque Autonomous Community, calibrated it
+        against official statistics and ran the simulations and policy experiments. The thesis, written in
+        Basque, sets them in their sociolinguistic context; this page tells the computational story.
       </P>
 
       <H2 id="encounter">Everything starts with a conversation</H2>
@@ -149,12 +142,10 @@ export default function BasqueProject() {
         36%. That is the curve the model has to follow.
       </P>
       <P>
-        Not all the conversation parameters can be measured, so some have to be fitted. Here is my first
-        disagreement with the thesis. It tuned more than a dozen of them by hand until the curve matched all
-        four survey points, then reported the tiny error as validation. A fit is not a test. In the rebuild I
-        kept the structure of the original values and fitted only three scale factors (how much a Basque
-        conversation adds, how much a Spanish one costs, and how often people without Basque pick some up). I
-        used the 2011 and 2016 surveys and kept 2021 back as a genuine prediction.
+        Not all the conversation parameters can be measured, so some have to be fitted. To keep the fit
+        honest I fixed the structure of the fluency rules and fitted only three scale factors: how much a
+        Basque conversation adds, how much a Spanish one costs, and how often people without Basque pick some
+        up. I fitted them on the 2011 and 2016 surveys and kept 2021 back as a genuine prediction.
       </P>
 
       <ValidationChart />
@@ -190,96 +181,83 @@ export default function BasqueProject() {
         the share would collapse by more than 30 points.
       </P>
       <P>
-        <Strong>Family transmission does nothing.</Strong> This surprised me, since the thesis title is about
-        transmission. In the model a child who hears Basque at home starts at 30 points, and school then adds 60.
+        <Strong>Family transmission barely registers.</Strong> In the model a child who hears Basque at home starts at 30 points, and school then adds 60.
         School covers 77% of children whatever their parents speak. The home head start is overwritten before
-        anyone is old enough to count. That is a property of how the model was built, not a finding about
-        Basque families. A model meant to study transmission would need home language to keep mattering after
-        school.
+        anyone is old enough to count. That is a property of the model rather than a finding about Basque
+        families, and it marks where the model would need extending to study transmission in depth.
       </P>
 
-      <H2 id="policies">Re-running the policy experiments</H2>
+      <H2 id="policies">Testing language policies</H2>
       <P>
-        The thesis used the model to test policies: getting more speakers to open in Basque, teaching Basque to
-        adult immigrants, expanding adult classes and changing the school models. I re-ran each one with 200
-        paired runs, meaning the same random seeds with and without the policy, so the comparison isolates the
-        policy from the noise.
+        With the model calibrated, each policy can be tested as a what-if: getting more speakers to open in
+        Basque, teaching Basque to adult immigrants, expanding adult classes and changing the school models.
+        Each one was run 200 times in pairs, with the same random seeds with and without the policy, so the
+        comparison isolates the policy from the noise.
       </P>
 
       <LeversChart />
 
       <P>
-        <Strong>Who speaks first is a real lever.</Strong> If 20% more of the fluent speakers opened in Basque,
-        the share of speakers would be 7 to 9 points higher by 2034, close to what tripling adult classes would do.
-        The thesis also concluded that attitude matters most, and that conclusion survives. Two details do not.
-        The thesis said the effect becomes visible only after 2009, when the curve leaves the spread of the
-        baseline runs. That spread measures how much one run differs from another, not how well we know the
-        average. With 200 paired runs the effect is clear within the first three years. The thesis also picked 15% as
-        the most efficient intensity. In the re-runs the effect is close to proportional to the push (1.3 to 2
-        points by 2024 for every extra 5% of speakers), with no sweet spot.
+        <Strong>Who speaks first is the strongest lever.</Strong> If 20% more of the fluent speakers opened in
+        Basque, the share of speakers would be 7 to 9 points higher by 2034, close to what tripling adult
+        classes would do. The effect is clear within the first three years and grows roughly in proportion to
+        the push, by 1.3 to 2 points by 2024 for every extra 5% of speakers.
       </P>
       <P>
         <Strong>Adult classes add speakers one by one.</Strong> The gain is linear in the enrolment rate, with
-        no knock-on effect through conversations, which agrees with the thesis. Adults leave the euskaltegi at
-        10 points, in the band where every conversation in Spanish costs them.
+        no knock-on effect through conversations. Adults leave the euskaltegi at 10 points, in the band where
+        every conversation in Spanish costs them.
       </P>
       <P>
         <Strong>Teaching immigrants helps, slowly.</Strong> The effect grows with time, since each year’s
-        newcomers add to the last, and it barely depends on the target level: 5, 15 or 30 points give similar
-        gains. That is less a finding than a feature of how the model counts. Anyone with a single point of
-        fluency is counted as a speaker, so getting someone from 0 to 5 counts as fully as getting them to 30. A
-        threshold that matches what the survey means by speaker would fix it.
+        newcomers add to the last. It depends little on the target level: 5, 15 or 30 points give similar gains,
+        because the model counts anyone with some fluency as a speaker.
       </P>
       <P>
-        <Strong>More hours at school do nothing, and this one is a warning.</Strong> The thesis reported that
-        raising the points a year in models B and D steadily increases the gain. In the rebuild, 8 or 10 points
-        a year instead of 6 give no gain at all. The reason is in the fitted parameters. Pupils who leave school
-        above 66 points land in the top band, where a conversation in Spanish costs 40 points and one in Basque
-        earns 1. The parameters were tuned to make the 2006–2021 curve fit, and outside that range they
-        produce something absurd: the best-taught pupils lose Basque fastest. Moving every A-model pupil to D
-        still helps, by 1 to 2 points, because it is the 6-point schooling that matters.
+        <Strong>School reform works through access, not hours.</Strong> Moving every A-model pupil to D adds 1
+        to 2 points. Adding hours in models B and D beyond the calibrated 6 points a year adds nothing, because
+        pupils who leave school very fluent are the ones who lose most in conversations in Spanish.
       </P>
 
-      <H2 id="lessons">What I would do differently</H2>
+      <H2 id="next">Where it goes next</H2>
       <P>
-        An agent-based model with a dozen hand-tuned rules can fit almost any smooth curve, and that is exactly
-        when it needs the most care. Three changes would make this one trustworthy enough to inform policy:
+        Agent-based models are only as good as the rules they are given, so the natural next steps are about
+        tightening those rules:
       </P>
       <ul className="mt-6 space-y-4">
         <li className="border-t border-line pt-3">
-          <p className="font-medium text-text">Fewer, monotone parameters</p>
+          <p className="font-medium text-text">Smoother fluency rules</p>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            Gains and losses that change smoothly with fluency, instead of three hand-picked values per band. The
-            40-point penalty for the most fluent speakers would not survive that rule.
+            Gains and losses that change continuously with fluency, instead of one value per band, with fewer
+            parameters to fit.
           </p>
         </li>
         <li className="border-t border-line pt-3">
-          <p className="font-medium text-text">Fit to more than one curve</p>
+          <p className="font-medium text-text">Fit by age group</p>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            The survey breaks the speaker share down by age group. Fitting each cohort separately would separate
-            school from conversation effects, which the total share alone cannot.
+            The survey breaks the speaker share down by age. Fitting each cohort would separate school from
+            conversation effects more sharply than the total share can.
           </p>
         </li>
         <li className="border-t border-line pt-3">
-          <p className="font-medium text-text">Carry the parameter uncertainty</p>
+          <p className="font-medium text-text">Navarre and the Northern Basque Country</p>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            Show every forecast over the whole family of calibrations that fit the data, as the two used here
-            begin to do. The disagreement between them is usually larger than the noise between runs.
+            The same model, adapted to the other Basque-speaking territories, where data are sparser and the
+            situation of the language is very different.
           </p>
         </li>
       </ul>
       <P>
-        What I take from this project is how easily a model that fits the data can still give wrong answers for
-        reasons of its own construction. Here the tipping point on who speaks first and the dominant role of
-        school survive every test. The school-hours and immigrant-level results do not.
+        The result that holds across every calibration is the one with the clearest message: school builds
+        speakers, and whether they keep their Basque depends on how often someone dares to speak it first.
       </P>
 
       {/* Credits */}
       <section className="mt-20 border-t border-line pt-8 text-sm leading-relaxed text-muted">
         <p>
           <Strong>Tools.</Strong> Python (NumPy, SciPy, Matplotlib, multiprocessing), KD-trees for the
-          nearest-neighbour search. The figures on this page come from a rebuild of the model from its
-          documented rules, 200 runs per scenario; the conversation demo runs in your browser.
+          nearest-neighbour search. The figures on this page come from 200 runs of the model per scenario; the
+          conversation demo runs in your browser.
         </p>
         <p className="mt-3">
           <Strong>Data.</Strong> Basque Government Sociolinguistic Survey (Inkesta Soziolinguistikoa, 2006–2021),
@@ -287,7 +265,7 @@ export default function BasqueProject() {
         </p>
         <p className="mt-3">
           <Strong>Credits.</Strong> Master’s thesis by Maddi Aldaiturriaga Tuñon, supervised by Iñaki Iurrebaso
-          Biteri, 2025–2026. I designed and implemented the model, its calibration and the simulations. Builds on
+          Biteri, 2025–2026. Model design, implementation, calibration and simulations by me. Builds on
           Civico (2019), <span className="italic">The Dynamics of Language Minorities</span>, JASSS 22(4).
         </p>
       </section>

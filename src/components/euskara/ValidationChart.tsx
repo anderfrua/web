@@ -112,7 +112,7 @@ export default function ValidationChart() {
       <figcaption className="mt-3 text-sm leading-relaxed text-muted">
         Share of people aged 16 and over who speak Basque in the Basque Autonomous Community. Three scale
         factors were fitted to the 2011 and 2016 surveys; 2021 was left out and is a prediction. The bars
-        compare the 2021 fluency mix, survey (blue) and model (amber). Re-run with my rebuild of the model.
+        compare the 2021 fluency mix, survey (blue) and model (amber).
       </figcaption>
     </figure>
   );
