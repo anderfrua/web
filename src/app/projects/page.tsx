@@ -20,10 +20,10 @@ const projects = [
   {
     slug: 'project2',
     year: '2025',
-    title: 'Sociophysical approach to Spanish voting dynamics',
-    description: `This work analyzes Spanish politics using sociophysics, focusing on three goals: evaluating its suitability for study, testing if the electoral system has memory with Markov models, and proposing a physical model that reproduces electoral dynamics based on real data.`,
+    title: 'Voters, spins and memory',
+    description: `Statistical physics applied to Spanish politics: a universal law in Senate votes, a Markov chain of incumbency, and an Ising-type model of how districts vote that you can run in the browser.`,
     image: '/images/DiagramaTransiciones.png',
-    tags: ['Sociophysics', 'Modelization', 'Ising', 'Monte Carlo'],
+    tags: ['Sociophysics', 'Ising model', 'Markov chains', 'Monte Carlo'],
   },
 ];
 

@@ -20,7 +20,7 @@ export default function PublicationsPage() {
         type="Bachelor’s thesis · Physics"
         title="Sociophysics applied to Spanish politics"
         venue="University of the Basque Country (UPV/EHU)"
-        abstract="Uses statistical-physics tools to study Spanish electoral behaviour: Markov models to test whether the electoral system has memory, and Ising-type agent simulations that reproduce voting dynamics, polarisation and opinion formation from real data."
+        abstract="Uses statistical-physics tools to study Spanish electoral behaviour: tests the universal vote distribution of Fortunato and Castellano on the Senate, models incumbency as a three-state Markov chain to test whether the system has memory, and proposes an Ising-type model of voters, parties and leaders analysed in the mean-field approximation."
         href="/docs/TFG_Fisica.pdf"
         linkLabel="Read thesis (PDF)"
       />
