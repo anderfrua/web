@@ -22,8 +22,18 @@ const projects = [
     year: '2025',
     title: 'Voters, spins and memory',
     description: `Statistical physics applied to Spanish politics: a universal law in Senate votes, a Markov chain of incumbency, and an Ising-type model of how districts vote that you can run in the browser.`,
-    image: '/images/DiagramaTransiciones.png',
+    image: '/images/projects/socio/lattice.png',
+    cover: true,
     tags: ['Sociophysics', 'Ising model', 'Markov chains', 'Monte Carlo'],
+  },
+  {
+    slug: 'project3',
+    year: '2026',
+    title: 'A wear bench that runs itself',
+    description: `An automated prognostics environment for a crank–slider wear bench at Ikerlan: an event-driven pipeline that estimates wear from a laser, forecasts it with uncertainty and streams it to a live dashboard. Master’s thesis.`,
+    image: '/images/projects/wear/card.png',
+    cover: true,
+    tags: ['Predictive maintenance', 'Data pipelines', 'Deep learning', 'Dashboards'],
   },
 ];
 
