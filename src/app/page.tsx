@@ -26,7 +26,7 @@ const timeline: Entry[] = [
     title: 'PhD researcher, Computational Neuroimaging Lab',
     place: 'BioBizkaia Health Research Institute, Cruces University Hospital · PhD in Biomedical Research, UPV/EHU',
     detail:
-      'Supervised by Prof. Jesús M. Cortés (Ikerbasque) and Ivan Carcamo. Mathematical and computational modelling of brain dynamics and connectivity, applied to brain ageing, neurodegenerative disease and the interplay between brain and metabolism.',
+      'Supervised by Jesús M. Cortés and Ivan Carcamo, both Ikerbasque researchers.Mathematical and computational modelling of brain dynamics and connectivity, applied to brain ageing, neurodegenerative disease and the interplay between brain and metabolism.',
     current: true,
   },
   {
