@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     template: '%s · Ander Fernández Rúa',
   },
   description:
-    'Physicist and electronics engineer. PhD researcher in computational neuroimaging at the BioBizkaia Health Research Institute.',
+    'PhD researcher in computational neuroscience at the BioBizkaia Health Research Institute: brain network models, brain ageing, neurodegeneration and brain–metabolism interactions.',
   icons: { icon: '/favicon.svg' },
   openGraph: {
     title: 'Ander Fernández Rúa',
     description:
-      'PhD researcher in computational neuroimaging at the BioBizkaia Health Research Institute.',
+      'PhD researcher in computational neuroscience at the BioBizkaia Health Research Institute.',
     url: 'https://anderfernandez.me',
     siteName: 'Ander Fernández Rúa',
     type: 'website',
