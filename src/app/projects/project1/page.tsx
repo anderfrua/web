@@ -7,6 +7,7 @@ import RegimeMap from '@/components/plasma/RegimeMap';
 import JumpDetectorDemo from '@/components/plasma/JumpDetectorDemo';
 import ModelComparison from '@/components/plasma/ModelComparison';
 import SweepExplorer from '@/components/plasma/SweepExplorer';
+import SourceDiagram from '@/components/plasma/SourceDiagram';
 
 export const metadata: Metadata = {
   title: 'Reading a plasma without touching it',
@@ -125,10 +126,7 @@ export default function PlasmaProject() {
         <BlockMath math={String.raw`f = \frac{eB}{2\pi m_e} \;\approx\; 3\ \text{GHz} \quad \text{for } B = 110\ \text{mT}`} />
       </div>
 
-      <Figure src="/images/projects/plasma/chamber.png" alt="Cross-section of the PIT30 plasma chamber" width={968} height={451}>
-        Cross-section of the chamber, about 600 mm end to end: (1) gas inlet, (2) RF port, (3) magnets,
-        (4) plasma chamber, (5) extraction electrodes, (6) vacuum pump, (7) pressure sensor, (8) beam diagnostics.
-      </Figure>
+      <SourceDiagram />
 
       <P>
         The plasma does not sit still. Depending on the microwave power and the amount of gas, it settles into
