@@ -151,9 +151,9 @@ export default function WearProject() {
       {/* Forecast */}
       <H2 id="forecast">Forecasts that say how sure they are</H2>
       <P>
-        Ikerlan’s team trained four architectures to forecast the wear curve from the sensors: two recurrent
-        networks (LSTM and GRU), a temporal convolutional network (TCN) and PatchTST, a transformer that reads the
-        series in patches. My part was to put them to work in the pipeline and to evaluate them.
+        Four architectures forecast the wear curve from the sensors: two recurrent networks (LSTM and GRU), a
+        temporal convolutional network (TCN) and PatchTST, a transformer that reads the series in patches. The
+        pipeline runs whichever one is selected, and I evaluated all four on the bench.
       </P>
       <P>
         A point forecast is not enough to schedule maintenance on: you need to know how far to trust it. The
@@ -265,8 +265,7 @@ export default function WearProject() {
         </p>
         <p className="mt-3">
           <Strong>Credits.</Strong> Master’s thesis for the MSc in Big Data &amp; Visual Analytics at the Universidad
-          Internacional de La Rioja (UNIR), supervised by Henry Eduardo Baquero Vega, carried out with the AI &amp;
-          Data department of Ikerlan. The predictive models were developed by Ikerlan’s research team.
+          Internacional de La Rioja (UNIR), carried out with the AI &amp; Data department of Ikerlan.
         </p>
       </section>
     </article>
