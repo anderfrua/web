@@ -18,7 +18,7 @@ const research = [
   },
 ];
 
-type Entry = { period: string; title: string; place: string; detail?: string; current?: boolean };
+type Entry = { period: string; title: string; place: string; detail?: string | string[]; current?: boolean };
 
 const timeline: Entry[] = [
   {
@@ -33,19 +33,24 @@ const timeline: Entry[] = [
     period: '2025 – 2026',
     title: 'Data scientist, AI & Data department',
     place: 'Ikerlan Technology Research Centre',
-    detail: 'Machine learning on sensor time series to predict mechanical wear in wind turbines.',
+    detail:
+      'Worked on an industrial prognostics and health management (PHM) project for wind turbines, predicting mechanical wear from sensor time series with machine learning. I designed and built an automated pipeline that acquires, processes and makes real-time predictions on experimental wear data, and an interactive tool that lets engineers use those predictions for predictive maintenance.',
   },
   {
     period: '2025',
     title: 'MSc in Big Data & Visual Analytics',
-    place: 'UNIR',
+    place: 'UNIR · Specialisation in artificial intelligence and automated reasoning',
+    detail:
+      'Processing and analysing large datasets, machine learning, and visual analytics: turning complex data into visualisations people can explore and reason with.',
   },
   {
     period: '2019 – 2024',
     title: 'Double degree in Physics and Electronic Engineering',
     place: 'University of the Basque Country (UPV/EHU)',
-    detail:
-      'Theses on machine-learning classification of plasma states in an ECR ion source (graded 9.4, published at ECRIS 2024) and on the statistical physics of Spanish voting behaviour.',
+    detail: [
+      'Electronic engineering thesis: machine-learning classification of plasma states in an ECR ion source from sensor signals, published as a first-author paper at ECRIS 2024.',
+      'Physics thesis: statistical-physics models (Ising-type agents, Markov chains) of Spanish voting behaviour.',
+    ],
   },
   {
     period: '2023',
@@ -191,7 +196,16 @@ export default function Home() {
               <p className="text-sm tabular-nums text-muted">{e.period}</p>
               <h3 className={`mt-1 font-medium text-text ${e.current ? 'text-xl' : 'text-base'}`}>{e.title}</h3>
               <p className="text-sm text-muted">{e.place}</p>
-              {e.detail && <p className="mt-2 text-sm leading-relaxed text-muted">{e.detail}</p>}
+              {typeof e.detail === 'string' && (
+                <p className="mt-2 text-sm leading-relaxed text-muted">{e.detail}</p>
+              )}
+              {Array.isArray(e.detail) && (
+                <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-muted marker:text-signal/70">
+                  {e.detail.map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ol>

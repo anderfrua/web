@@ -39,7 +39,7 @@ export default function PublicationsPage() {
         year="2024"
         type="Bachelor’s thesis · Applied physics"
         title="Ion source optimisation with artificial-intelligence techniques"
-        venue="University of the Basque Country (UPV/EHU) · Graded 9.4/10"
+        venue="University of the Basque Country (UPV/EHU)"
         abstract="Real-time detection and classification of hydrogen plasma regimes in an ECR ion source from experimental signals. An MLP with PCA reaches 93% accuracy and is packaged as a Python module for integration into the control system."
         href="https://addi.ehu.es/handle/10810/73191"
         linkLabel="Read on ADDI"
