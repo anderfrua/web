@@ -26,7 +26,7 @@ const timeline: Entry[] = [
     title: 'PhD researcher, Computational Neuroimaging Lab',
     place: 'BioBizkaia Health Research Institute, Cruces University Hospital · PhD in Biomedical Research, UPV/EHU',
     detail:
-      'Supervised by Prof. Jesús M. Cortés (Ikerbasque). Computational neuroscience and neuroimaging: brain connectivity, brain ageing, neurodegenerative disease and clinical machine learning.',
+      'Supervised by Prof. Jesús M. Cortés (Ikerbasque) and Ivan Carcamo. Mathematical and computational modelling of brain dynamics and connectivity, applied to brain ageing, neurodegenerative disease and the interplay between brain and metabolism.',
     current: true,
   },
   {
@@ -113,7 +113,7 @@ export default function Home() {
           {...reveal(0.16)}
           className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
         >
-          I build mathematical and machine-learning models of brain networks to understand how they
+          I build mathematical and computational models of brain networks to understand how they
           age, how they fail in neurodegenerative disease, and how the body’s metabolism shapes them.
           Based at the <span className="text-text">Computational Neuroimaging Lab, BioBizkaia Health Research Institute</span>.
         </motion.p>
