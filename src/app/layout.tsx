@@ -27,7 +27,6 @@ export const metadata: Metadata = {
   },
   description:
     'PhD researcher in computational neuroscience at the BioBizkaia Health Research Institute: brain network models, brain ageing, neurodegeneration and brain–metabolism interactions.',
-  icons: { icon: '/favicon.svg' },
   openGraph: {
     title: 'Ander Fernández Rúa',
     description:
