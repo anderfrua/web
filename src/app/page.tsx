@@ -26,7 +26,7 @@ const timeline: Entry[] = [
     title: 'PhD researcher, Computational Neuroimaging Lab',
     place: 'BioBizkaia Health Research Institute, Cruces University Hospital · PhD in Biomedical Research, UPV/EHU',
     detail:
-      'Supervised by Jesús M. Cortés and Ivan Carcamo, both Ikerbasque researchers.Mathematical and computational modelling of brain dynamics and connectivity, applied to brain ageing, neurodegenerative disease and the interplay between brain and metabolism.',
+      'Supervised by Jesús M. Cortés and Ivan Carcamo, both Ikerbasque researchers. Mathematical and computational modelling of brain dynamics and connectivity, applied to brain ageing, neurodegenerative disease and the interplay between brain and metabolism.',
     current: true,
   },
   {
@@ -37,7 +37,7 @@ const timeline: Entry[] = [
       'Worked on an industrial prognostics and health management (PHM) project for wind turbines, predicting mechanical wear from sensor time series with machine learning. I designed and built an automated pipeline that acquires, processes and makes real-time predictions on experimental wear data, and an interactive tool that lets engineers use those predictions for predictive maintenance.',
   },
   {
-    period: '2025',
+    period: '2025 – 2026',
     title: 'MSc in Big Data & Visual Analytics',
     place: 'UNIR · Specialisation in artificial intelligence and automated reasoning',
     detail:
@@ -163,8 +163,8 @@ export default function Home() {
               up to something that behaves as a whole?
             </span>{' '}
             I first asked it of a hydrogen plasma, training a classifier to tell its states apart from
-            sensor signals alone. That became my first paper. Then of voters, with Ising models and
-            Markov chains fitted to forty years of Spanish elections. Then of wind turbines wearing
+            sensor signals alone. That became my first paper. Then of voters, studied with Ising models
+            and Markov chains on forty years of Spanish elections. Then of wind turbines wearing
             out at Ikerlan.
           </p>
           <p>

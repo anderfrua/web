@@ -53,7 +53,7 @@ export default function SociophysicsProject() {
 
       {/* Header */}
       <header className="mt-8">
-        <p className="text-muted">2025 · Bachelor’s thesis in physics, UPV/EHU</p>
+        <p className="text-muted">2024 · Bachelor’s thesis in physics, UPV/EHU</p>
         <h1 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-text sm:text-6xl">Voters, spins and memory</h1>
         <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
           Can the physics of magnets say something about how Spain votes? Three questions, answered with forty

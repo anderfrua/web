@@ -31,8 +31,7 @@ export default function PublicationCard({
         {href && (
           <a
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(href.startsWith('/projects') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
             className="mt-5 inline-block border-b border-signal/60 pb-0.5 text-sm text-text hover:border-signal"
           >
             {linkLabel}

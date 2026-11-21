@@ -19,7 +19,7 @@ const projects = [
   },
   {
     slug: 'project2',
-    year: '2025',
+    year: '2024',
     title: 'Voters, spins and memory',
     description: `Statistical physics applied to Spanish politics: a universal law in Senate votes, a Markov chain of incumbency, and an Ising-type model of how districts vote that you can run in the browser.`,
     image: '/images/projects/socio/lattice.png',
@@ -81,7 +81,7 @@ export default function ProjectsPage() {
     <section className="mx-auto max-w-5xl px-6 py-20">
       <h1 className="font-serif text-4xl text-text sm:text-5xl">Projects</h1>
       <p className="mt-4 mb-14 max-w-[60ch] text-muted">
-        Selected research projects, each with a write-up of the method and results.
+        Research projects and collaborations, each written up with its method and results.
       </p>
 
       <h2 className="font-serif text-2xl text-text">Theses and research</h2>
